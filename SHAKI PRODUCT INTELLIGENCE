@@ -1,0 +1,2592 @@
+# SHAKI PRODUCT INTELLIGENCE
+
+## 产品智能数据库标准 V3.0
+
+### SHAKI AI Product Intelligence & SKU Data Standard
+
+**版本 / Version：V3.0**
+**适用部门 / Departments：产品部 / 外贸部 / 品牌部 / 设计部 / AI产品团队 / 开发团队**
+**核心目的 / Purpose：建立SHAKI统一的AI产品知识库，为客户匹配、智能推品、销售Proposal和未来AI Sales OS提供数据基础。**
+
+---
+
+# 01. 产品库战略定位
+
+## Product Intelligence Positioning
+
+SHAKI Product Intelligence 不是普通的：
+
+> SKU Catalog / 产品目录
+
+而是：
+
+> **AI Product Knowledge Base / AI产品知识库**
+
+每一个SKU都应该被AI理解为一个完整的：
+
+**Product DNA / 产品DNA**
+
+---
+
+# 02. 产品分类体系
+
+## Product Taxonomy
+
+## 一级品类 / Level 1 Category
+
+SHAKI统一采用以下五大一级品类：
+
+| 中文   | English     | Code        |
+| ---- | ----------- | ----------- |
+| 女用   | Female      | FEMALE      |
+| 男用   | Male        | MALE        |
+| 夫妻   | Couples     | COUPLES     |
+| BDSM | BDSM        | BDSM        |
+| 水剂   | Water-Based | WATER_BASED |
+
+---
+
+# 03. 二级品类
+
+## Level 2 Category
+
+## 01 女用 / Female
+
+建议：
+
+* 按摩器 / Massagers
+* 吸吮类 / Suction Devices
+* 震动类 / Vibrators
+* 穿戴类 / Wearables
+* 入体类 / Insertable
+* 外用类 / External
+* 多功能类 / Multifunctional
+* 智能类 / Smart Devices
+* 情趣小玩具 / Intimate Accessories
+
+---
+
+# 04. 男用 / Male
+
+建议：
+
+* 男用按摩 / Male Massagers
+* 杯类 / Masturbators
+* 按摩器 / Massagers
+* 环类 / Rings
+* 延时类 / Performance Products
+* 前列腺相关 / Prostate Products
+* 多功能类 / Multifunctional
+* 智能类 / Smart Devices
+* 配件 / Accessories
+
+---
+
+# 05. 夫妻 / Couples
+
+* 夫妻互动 / Couple Play
+* 双人穿戴 / Couples Wearables
+* 远程互动 / Remote Play
+* 双人按摩 / Couples Massagers
+* 情侣玩具 / Couple Toys
+* 游戏类 / Couple Games
+* 礼盒 / Gift Sets
+* 多功能类 / Multifunctional
+
+---
+
+# 06. BDSM
+
+* 眼罩 / Blindfolds
+* 束缚 / Restraints
+* 项圈 / Collars
+* 角色扮演 / Roleplay
+* 刺激类 / Sensory Play
+* 控制类 / Control Products
+* BDSM套装 / BDSM Sets
+* 配件 / Accessories
+
+---
+
+# 07. 水剂 / Water-Based
+
+水剂类独立作为一级品类。
+
+二级分类：
+
+* 润滑剂 / Lubricants
+* 女性护理 / Feminine Care
+* 清洁护理 / Intimate Cleansing
+* 注入式产品 / Applicator Products
+* 按摩类 / Massage Products
+* 功能型水剂 / Functional Liquids
+* 情侣类 / Couples Products
+* 旅行装 / Travel Size
+* 礼盒 / Gift Sets
+
+---
+
+# 08. 产品分类原则
+
+一个SKU：
+
+**只能有一个Primary Category / 主品类**
+
+但可以拥有多个：
+
+**Secondary Tags / 辅助标签**
+
+例如：
+
+```text
+Primary Category
+女用 / Female
+
+Secondary Categories
+吸吮 / Suction
+震动 / Vibration
+多功能 / Multifunctional
+
+Scenario Tags
+Self Care
+Solo
+Premium
+
+Style Tags
+Minimal
+Luxury
+Feminine
+```
+
+这样可以避免：
+
+> “一个产品到底属于哪一类？”
+
+与：
+
+> “这个产品还有什么属性？”
+
+混在一起。
+
+---
+
+# 09. SKU字段总览
+
+## 100+ Data Fields
+
+SHAKI SKU数据库建议划分为：
+
+```text
+A. 基础身份
+B. 分类体系
+C. 产品描述
+D. 功能属性
+E. 使用属性
+F. 人群属性
+G. 设计属性
+H. 材质属性
+I. 尺寸属性
+J. 技术属性
+K. 电气属性
+L. 防水属性
+M. 包装属性
+N. 商业属性
+O. 市场属性
+P. 品牌属性
+Q. OEM/ODM属性
+R. 图片与媒体
+S. AI标签
+T. AI评分
+U. 销售数据
+V. 合规数据
+W. AI推荐数据
+```
+
+总字段建议：
+
+> **130+**
+
+---
+
+# 10. A｜基础身份
+
+## Basic Identity
+
+| Field           | 中文     | 类型     |
+| --------------- | ------ | ------ |
+| product_id      | 产品ID   | String |
+| sku             | SKU编码  | String |
+| model_number    | 型号     | String |
+| product_name_cn | 中文产品名  | String |
+| product_name_en | 英文产品名  | String |
+| short_name      | 产品简称   | String |
+| series_name     | 系列名称   | String |
+| product_version | 产品版本   | String |
+| product_status  | 产品状态   | Enum   |
+| launch_date     | 上市日期   | Date   |
+| update_date     | 最后更新时间 | Date   |
+
+---
+
+# 11. Product Status
+
+```text
+Draft
+草稿
+
+Active
+在售
+
+New
+新品
+
+Best Seller
+爆款
+
+Strategic
+战略产品
+
+Seasonal
+季节性
+
+Discontinued
+停产
+
+Coming Soon
+即将上市
+```
+
+---
+
+# 12. B｜分类体系
+
+## Category
+
+| Field               | 中文   |
+| ------------------- | ---- |
+| primary_category    | 一级品类 |
+| secondary_category  | 二级品类 |
+| tertiary_category   | 三级品类 |
+| functional_category | 功能分类 |
+| usage_category      | 使用分类 |
+| scenario_category   | 场景分类 |
+
+---
+
+# 13. C｜产品描述
+
+## Product Description
+
+| Field                | 中文            |
+| -------------------- | ------------- |
+| description_cn       | 中文产品描述        |
+| description_en       | 英文产品描述        |
+| short_description_cn | 中文短描述         |
+| short_description_en | 英文短描述         |
+| product_story_cn     | 产品故事          |
+| product_story_en     | Product Story |
+| key_selling_point_cn | 中文核心卖点        |
+| key_selling_point_en | 英文核心卖点        |
+| product_highlights   | 产品亮点          |
+| differentiation      | 差异化优势         |
+
+---
+
+# 14. D｜功能属性
+
+## Functional Attributes
+
+| Field               | 中文    |
+| ------------------- | ----- |
+| primary_function    | 核心功能  |
+| secondary_functions | 次要功能  |
+| vibration           | 震动    |
+| suction             | 吸吮    |
+| rotation            | 旋转    |
+| heating             | 加热    |
+| cooling             | 冷感    |
+| pressure            | 压力    |
+| pulsation           | 脉冲    |
+| massage             | 按摩    |
+| movement            | 运动方式  |
+| remote_control      | 远程控制  |
+| app_control         | APP控制 |
+| smart_control       | 智能控制  |
+| multi_function      | 多功能   |
+| dual_motor          | 双马达   |
+| motor_type          | 马达类型  |
+| mode_count          | 模式数量  |
+| intensity_levels    | 强度档位  |
+
+---
+
+# 15. E｜使用属性
+
+## Usage Attributes
+
+| Field             | 中文   |
+| ----------------- | ---- |
+| usage_type        | 使用方式 |
+| external_use      | 外部使用 |
+| internal_use      | 内部使用 |
+| wearable          | 穿戴式  |
+| hands_free        | 解放双手 |
+| solo_use          | 单人使用 |
+| couples_use       | 夫妻使用 |
+| beginner_friendly | 新手友好 |
+| travel_friendly   | 旅行友好 |
+| portable          | 便携   |
+| discreet          | 隐私友好 |
+| easy_to_clean     | 易清洁  |
+| rechargeable      | 可充电  |
+| disposable        | 一次性  |
+
+---
+
+# 16. F｜目标人群
+
+## Target Audience
+
+| Field          | 中文       |
+| -------------- | -------- |
+| target_gender  | 目标性别     |
+| target_age     | 目标年龄     |
+| target_segment | 目标人群     |
+| beginner       | 新手       |
+| advanced_user  | 进阶用户     |
+| premium_user   | 高端用户     |
+| mass_market    | 大众市场     |
+| gift_buyer     | 礼品购买者    |
+| couple_user    | 夫妻用户     |
+| wellness_user  | 健康生活方式用户 |
+
+---
+
+# 17. 人群标签
+
+## Audience Tags
+
+标准标签：
+
+```text
+Female
+Male
+Couples
+Beginner
+Advanced
+Premium
+Mass Market
+Young Adult
+Adult
+Wellness
+Lifestyle
+Gift
+Travel
+```
+
+---
+
+# 18. G｜设计属性
+
+## Design Attributes
+
+这是AI判断：
+
+> “这个产品和客户品牌风格像不像？”
+
+的核心数据。
+
+字段：
+
+| Field                 | 中文    |
+| --------------------- | ----- |
+| design_style          | 设计风格  |
+| visual_style          | 视觉风格  |
+| form_language         | 造型语言  |
+| color_style           | 色彩风格  |
+| packaging_style       | 包装风格  |
+| design_keywords       | 设计关键词 |
+| aesthetic_positioning | 审美定位  |
+| brand_expression      | 品牌表达  |
+| visual_complexity     | 视觉复杂度 |
+| perceived_value       | 感知价值  |
+
+---
+
+# 19. 标准设计风格标签
+
+## Design Style Tags
+
+```text
+Minimal
+极简
+
+Premium
+高端
+
+Luxury
+奢华
+
+Feminine
+女性化
+
+Elegant
+优雅
+
+Modern
+现代
+
+Technology
+科技
+
+Soft
+柔和
+
+Cute
+可爱
+
+Fashion
+时尚
+
+Artistic
+艺术
+
+Discreet
+低调
+
+Bold
+大胆
+
+Playful
+趣味
+
+Medical
+专业健康
+
+Wellness
+健康生活方式
+```
+
+---
+
+# 20. H｜材质
+
+## Material
+
+字段：
+
+```text
+main_material
+主要材质
+
+surface_material
+表面材质
+
+silicone_type
+硅胶类型
+
+hardness
+硬度
+
+texture
+表面触感
+
+coating
+表面处理
+
+material_certification
+材质认证
+```
+
+标准标签：
+
+```text
+Silicone
+ABS
+PC
+TPE
+TPR
+Metal
+Glass
+Aluminum
+Fabric
+```
+
+具体材料必须以SHAKI实际产品资料为准，AI不得自行推测。
+
+---
+
+# 21. I｜尺寸
+
+## Dimensions
+
+字段：
+
+```text
+product_length
+产品长度
+
+product_width
+产品宽度
+
+product_height
+产品高度
+
+product_diameter
+产品直径
+
+net_weight
+净重
+
+gross_weight
+毛重
+
+package_length
+包装长度
+
+package_width
+包装宽度
+
+package_height
+包装高度
+```
+
+---
+
+# 22. J｜技术属性
+
+## Technical Specifications
+
+```text
+technology
+技术类型
+
+motor_system
+马达系统
+
+control_system
+控制系统
+
+control_distance
+控制距离
+
+frequency
+频率
+
+amplitude
+振幅
+
+noise_level
+噪音
+
+working_time
+工作时间
+
+charging_time
+充电时间
+
+standby_time
+待机时间
+
+display
+显示方式
+
+indicator
+指示方式
+```
+
+---
+
+# 23. K｜电气属性
+
+## Electrical
+
+```text
+battery_type
+电池类型
+
+battery_capacity
+电池容量
+
+voltage
+电压
+
+input_voltage
+输入电压
+
+charging_type
+充电方式
+
+charging_port
+充电接口
+
+usb
+USB
+
+wireless_charging
+无线充电
+
+power
+功率
+```
+
+---
+
+# 24. L｜防水属性
+
+## Waterproof
+
+标准：
+
+```text
+No Waterproof
+不防水
+
+Splash Resistant
+防泼溅
+
+IPX4
+
+IPX5
+
+IPX6
+
+IPX7
+
+IPX8
+```
+
+必须以真实测试/产品资料为依据。
+
+---
+
+# 25. M｜包装
+
+## Packaging
+
+字段：
+
+```text
+packaging_type
+包装类型
+
+box_material
+包装材料
+
+box_color
+包装颜色
+
+box_size
+包装尺寸
+
+inner_packaging
+内包装
+
+outer_packaging
+外包装
+
+gift_packaging
+礼盒包装
+
+custom_packaging
+定制包装
+
+language_packaging
+包装语言
+
+manual_language
+说明书语言
+```
+
+---
+
+# 26. N｜商业属性
+
+## Commercial Attributes
+
+这是外贸推品非常重要的数据层。
+
+```text
+factory_price
+工厂价格
+
+wholesale_price
+批发价格
+
+suggested_retail_price
+建议零售价
+
+target_retail_price
+目标零售价
+
+price_level
+价格等级
+
+margin_level
+利润等级
+
+moq
+MOQ
+
+sample_price
+样品价格
+
+lead_time
+交期
+
+production_capacity
+产能
+
+stock_status
+库存状态
+```
+
+---
+
+# 27. Price Position
+
+统一：
+
+```text
+Entry
+入门
+
+Mid
+中端
+
+Mid-Premium
+中高端
+
+Premium
+高端
+
+Luxury
+奢华
+```
+
+---
+
+# 28. O｜市场属性
+
+## Market Attributes
+
+字段：
+
+```text
+target_market
+目标市场
+
+market_priority
+市场优先级
+
+market_fit
+市场适配
+
+market_status
+市场状态
+
+market_demand
+市场需求
+
+market_trend
+市场趋势
+
+competitor_density
+竞品密度
+
+market_opportunity
+市场机会
+```
+
+---
+
+# 29. 市场标签
+
+```text
+US
+美国
+
+UK
+英国
+
+EU
+欧洲
+
+Australia
+澳大利亚
+
+Japan
+日本
+
+Korea
+韩国
+
+Southeast Asia
+东南亚
+
+Middle East
+中东
+
+Global
+全球
+```
+
+---
+
+# 30. P｜品牌属性
+
+## Brand Attributes
+
+字段：
+
+```text
+brand_positioning
+品牌定位
+
+brand_level
+品牌等级
+
+brand_style
+品牌风格
+
+brand_story
+品牌故事
+
+design_language
+设计语言
+
+collection
+所属系列
+
+brand_keywords
+品牌关键词
+```
+
+---
+
+# 31. Q｜OEM / ODM
+
+必须独立建立。
+
+字段：
+
+```text
+oem_available
+是否支持OEM
+
+odm_available
+是否支持ODM
+
+logo_customization
+Logo定制
+
+color_customization
+颜色定制
+
+material_customization
+材料定制
+
+packaging_customization
+包装定制
+
+function_customization
+功能定制
+
+mold_customization
+模具定制
+
+app_customization
+APP定制
+
+firmware_customization
+固件定制
+
+structure_customization
+结构定制
+
+surface_customization
+外观定制
+
+custom_moq
+定制MOQ
+
+custom_lead_time
+定制交期
+```
+
+---
+
+# 32. R｜图片与媒体
+
+## Media Assets
+
+每个SKU至少需要：
+
+### 01 Hero Image
+
+产品主图。
+
+### 02 Front View
+
+正面图。
+
+### 03 Side View
+
+侧面图。
+
+### 04 Detail Image
+
+细节图。
+
+### 05 Packaging
+
+包装图。
+
+### 06 Lifestyle
+
+场景图。
+
+### 07 Feature Image
+
+卖点图。
+
+### 08 Size Diagram
+
+尺寸图。
+
+### 09 Instruction
+
+使用说明图。
+
+### 10 Video
+
+产品视频。
+
+---
+
+# 33. 图片命名规范
+
+## Image Naming
+
+统一：
+
+```text
+SKU_01_HERO
+SKU_02_FRONT
+SKU_03_SIDE
+SKU_04_DETAIL
+SKU_05_PACKAGING
+SKU_06_LIFESTYLE
+SKU_07_FEATURE
+SKU_08_SIZE
+SKU_09_INSTRUCTION
+SKU_10_VIDEO
+```
+
+例如：
+
+```text
+SHAKI-ST001_01_HERO.jpg
+SHAKI-ST001_02_FRONT.jpg
+SHAKI-ST001_03_SIDE.jpg
+```
+
+---
+
+# 34. 产品主图规范
+
+AI推荐卡使用的主图必须：
+
+* 产品完整
+* 背景干净
+* 主体居中
+* 不使用复杂文字覆盖
+* 不使用低清图片
+* 不使用明显水印
+* 产品比例统一
+* 尽可能使用统一摄影标准
+
+建议：
+
+**2000 × 2000px以上**
+
+优先：
+
+**PNG / WebP**
+
+---
+
+# 35. 场景图规范
+
+用于：
+
+* Proposal
+* Social Share
+* Product Card
+
+建议：
+
+**至少2000px长边**
+
+比例：
+
+```text
+1:1
+4:5
+16:9
+9:16
+```
+
+---
+
+# 36. S｜AI标签
+
+## AI Semantic Tags
+
+这是整个数据库最重要的一层。
+
+每个SKU必须自动生成：
+
+### Category Tags
+
+品类标签。
+
+### Function Tags
+
+功能标签。
+
+### Audience Tags
+
+人群标签。
+
+### Style Tags
+
+风格标签。
+
+### Scenario Tags
+
+场景标签。
+
+### Market Tags
+
+市场标签。
+
+### Price Tags
+
+价格标签。
+
+### Opportunity Tags
+
+机会标签。
+
+---
+
+# 37. Scenario Tags
+
+## 使用场景
+
+标准：
+
+```text
+Self Care
+自我护理
+
+Solo
+单人
+
+Couples
+夫妻
+
+Bedroom
+卧室
+
+Travel
+旅行
+
+Gift
+礼赠
+
+Wellness
+健康生活方式
+
+Date Night
+约会
+
+Long Distance
+异地关系
+
+Premium Lifestyle
+高端生活方式
+```
+
+---
+
+# 38. Product Positioning Tags
+
+```text
+Bestseller
+爆款
+
+New
+新品
+
+Hero Product
+核心产品
+
+Entry Product
+引流产品
+
+Premium Product
+高端产品
+
+Margin Product
+利润产品
+
+Traffic Product
+流量产品
+
+Giftable
+礼赠型
+
+Strategic Product
+战略产品
+
+Innovation
+创新产品
+```
+
+---
+
+# 39. T｜AI评分
+
+## AI Product Score
+
+每个SKU建立自己的：
+
+# Product Intelligence Score
+
+总分100。
+
+---
+
+## 六大维度
+
+### 01 Product Quality
+
+产品力
+
+20%
+
+### 02 Design Value
+
+设计价值
+
+15%
+
+### 03 Functional Differentiation
+
+功能差异化
+
+15%
+
+### 04 Commercial Potential
+
+商业潜力
+
+20%
+
+### 05 Market Adaptability
+
+市场适应性
+
+15%
+
+### 06 Brand Value
+
+品牌价值
+
+15%
+
+---
+
+# 40. Product Quality Score
+
+判断：
+
+* 材质
+* 工艺
+* 结构
+* 使用体验
+* 稳定性
+* 产品完成度
+
+---
+
+# 41. Design Value Score
+
+判断：
+
+* 外观
+* CMF
+* 包装
+* 视觉
+* 产品辨识度
+* 高端感
+
+---
+
+# 42. Functional Differentiation
+
+判断：
+
+> 与市场同类产品相比，有没有明显差异？
+
+例如：
+
+* 双马达
+* 多功能
+* 独特运动方式
+* 智能控制
+* 远程控制
+* 独特结构
+
+---
+
+# 43. Commercial Potential
+
+判断：
+
+* 价格空间
+* 毛利空间
+* 客户接受度
+* 渠道适配
+* 产品线价值
+* 新品机会
+
+---
+
+# 44. Market Adaptability
+
+判断：
+
+* 美国
+* 欧洲
+* 英国
+* 澳洲
+* 东南亚
+* 中东
+
+等不同市场的适配程度。
+
+---
+
+# 45. Brand Value
+
+判断：
+
+> 这个产品是否能够代表SHAKI？
+
+例如：
+
+普通产品：
+
+**Brand Value 65**
+
+战略新品：
+
+**Brand Value 95**
+
+---
+
+# 46. U｜销售数据
+
+## Sales Intelligence
+
+以后系统需要记录：
+
+```text
+view_count
+浏览次数
+
+recommend_count
+推荐次数
+
+proposal_count
+Proposal次数
+
+share_count
+分享次数
+
+client_interest_count
+客户兴趣次数
+
+sample_request_count
+样品申请次数
+
+quotation_count
+报价次数
+
+order_count
+订单次数
+
+sales_amount
+销售金额
+
+conversion_rate
+转化率
+```
+
+---
+
+# 47. V｜合规数据
+
+## Compliance
+
+字段：
+
+```text
+certification
+认证
+
+certificate_number
+证书编号
+
+test_report
+测试报告
+
+material_certification
+材料认证
+
+market_compliance
+市场合规
+
+warning
+警告信息
+
+usage_instruction
+使用说明
+
+age_requirement
+年龄要求
+```
+
+所有合规信息：
+
+> **必须来源于真实文件。**
+
+AI不得生成认证。
+
+---
+
+# 48. W｜AI推荐数据
+
+## Recommendation Intelligence
+
+每个产品额外建立：
+
+```text
+recommended_customer_type
+推荐客户类型
+
+recommended_brand_style
+推荐品牌风格
+
+recommended_market
+推荐市场
+
+recommended_price_segment
+推荐价格段
+
+recommended_category
+推荐品类
+
+recommended_product_gap
+适合填补的产品空缺
+
+recommended_reason
+推荐理由
+
+recommended_scenario
+推荐场景
+
+cross_sell_products
+关联推荐产品
+
+upsell_products
+升级推荐产品
+
+alternative_products
+替代产品
+```
+
+---
+
+# 49. Product Relationship
+
+建立产品之间的关系：
+
+```text
+Similar Product
+相似产品
+
+Alternative
+替代产品
+
+Upgrade
+升级产品
+
+Cross Sell
+交叉销售
+
+Bundle
+组合销售
+
+Entry → Premium
+价格升级
+
+Premium → Strategic
+战略升级
+```
+
+这样AI以后可以回答：
+
+> “这个客户不喜欢A，还有什么？”
+
+直接找到：
+
+**Alternative Products**
+
+---
+
+# 50. SKU最终数据结构
+
+一个SKU最终应该类似：
+
+```text
+SHAKI Product
+
+├── Identity
+├── Category
+├── Description
+├── Function
+├── Usage
+├── Audience
+├── Design
+├── Material
+├── Dimension
+├── Technology
+├── Electrical
+├── Waterproof
+├── Packaging
+├── Commercial
+├── Market
+├── Brand
+├── OEM/ODM
+├── Media
+├── AI Tags
+├── AI Score
+├── Sales Data
+├── Compliance
+└── Recommendation Intelligence
+```
+
+---
+
+# 51. Excel导入模板
+
+## Excel Import Template
+
+建议建立：
+
+**SHAKI_Product_Master.xlsx**
+
+Sheet：
+
+```text
+01_Product_Master
+02_Function
+03_Audience
+04_Design
+05_Commercial
+06_Market
+07_OEM_ODM
+08_Media
+09_Compliance
+10_AI_Tags
+```
+
+---
+
+# 52. Product Master字段
+
+第一行：
+
+```text
+product_id
+sku
+product_name_cn
+product_name_en
+primary_category
+secondary_category
+tertiary_category
+product_status
+series_name
+launch_date
+description_cn
+description_en
+primary_function
+secondary_functions
+target_gender
+target_age
+target_segment
+design_style
+visual_style
+main_material
+product_length
+product_width
+product_height
+product_weight
+mode_count
+control_type
+battery_type
+battery_capacity
+charging_type
+waterproof_rating
+noise_level
+packaging_type
+price_level
+wholesale_price
+suggested_retail_price
+moq
+sample_price
+lead_time
+target_market
+oem_available
+odm_available
+custom_moq
+custom_lead_time
+```
+
+---
+
+# 53. Excel数据填写原则
+
+### 必填字段
+
+```text
+SKU
+产品中文名
+产品英文名
+一级品类
+二级品类
+核心功能
+主要材质
+目标人群
+价格等级
+MOQ
+OEM
+ODM
+产品主图
+产品状态
+```
+
+---
+
+### 非必填字段
+
+如果没有数据：
+
+> 留空。
+
+禁止：
+
+```text
+N/A
+Unknown
+Probably
+```
+
+尤其不能让AI把这些内容当成真实产品数据。
+
+---
+
+# 54. AI自动识别字段
+
+当上传：
+
+* Excel
+* PDF
+* 产品目录
+* 产品图片
+* 产品说明书
+
+AI自动提取：
+
+```text
+Product Name
+SKU
+Category
+Function
+Material
+Dimensions
+Features
+Packaging
+Target Audience
+Design Style
+Price Position
+OEM/ODM
+Product Tags
+```
+
+---
+
+# 55. AI识图
+
+上传产品图后：
+
+AI识别：
+
+```text
+Product Type
+产品类型
+
+Form
+造型
+
+Color
+颜色
+
+Material Appearance
+材质外观
+
+Design Style
+设计风格
+
+Functional Clues
+功能线索
+
+Packaging Style
+包装风格
+```
+
+但：
+
+> **视觉推断不能覆盖真实产品资料。**
+
+---
+
+# 56. 数据优先级
+
+AI需要遵守：
+
+```text
+Level 1
+Official Product Data
+官方产品资料
+
+Level 2
+Product Specification
+产品规格
+
+Level 3
+Certified Documents
+认证文件
+
+Level 4
+Sales Team Input
+销售团队输入
+
+Level 5
+AI Inference
+AI推断
+```
+
+如果冲突：
+
+> Level 1 > Level 2 > Level 3 > Level 4 > Level 5
+
+---
+
+# 57. AI字段状态
+
+每一个AI生成字段记录：
+
+```text
+source_type
+来源类型
+
+source_reference
+来源
+
+confidence
+可信度
+
+last_verified
+最后验证时间
+```
+
+例如：
+
+```text
+Design Style:
+Minimal / Premium
+
+Source:
+Product Image
+
+Confidence:
+0.91
+```
+
+---
+
+# 58. 产品数据质量评分
+
+## Data Quality Score
+
+每个SKU：
+
+# Data Completeness
+
+例如：
+
+**94%**
+
+计算：
+
+```text
+Required Fields Completed
+/
+Required Fields Total
+```
+
+---
+
+## 数据等级
+
+```text
+90–100
+Excellent
+
+75–89
+Good
+
+60–74
+Needs Review
+
+<60
+Incomplete
+```
+
+低于75%的产品：
+
+> 不建议进入AI推荐池。
+
+---
+
+# 59. AI推荐池
+
+## Recommendation Pool
+
+产品状态：
+
+```text
+Active
++
+Data Completeness ≥ 75%
++
+Compliance Verified
+```
+
+才可以进入：
+
+**AI Recommendation Pool**
+
+---
+
+# 60. SKU推荐权重
+
+最终推荐一个产品时：
+
+```text
+Client Fit
+40%
+
+Product Intelligence Score
+20%
+
+Market Potential
+15%
+
+Portfolio Gap
+10%
+
+Sales Performance
+10%
+
+Strategic Value
+5%
+```
+
+---
+
+# 61. 防止爆品霸榜
+
+这是一个非常重要的算法问题。
+
+如果只按照销量：
+
+> 爆款永远被推荐。
+
+所以必须设置：
+
+# Recommendation Diversity
+
+例如一个客户最终推荐10款：
+
+```text
+Best Match
+4
+
+Growth Opportunity
+2
+
+Portfolio Expansion
+2
+
+Strategic Products
+2
+```
+
+保证：
+
+> **AI既推荐最适合的，也推荐值得尝试的。**
+
+---
+
+# 62. 新品冷启动
+
+新品没有销售数据时：
+
+Sales Performance：
+
+> 不参与惩罚。
+
+替换为：
+
+```text
+Design Score
++
+Differentiation
++
+Market Potential
++
+Brand Value
+```
+
+这样SHAKI新品不会因为：
+
+> “还没有卖过”
+
+而永远无法被AI推荐。
+
+---
+
+# 63. Product Match最终算法
+
+最终：
+
+```text
+Final Recommendation Score
+
+=
+Client Fit × 40%
+
++
+Product Intelligence × 20%
+
++
+Market Potential × 15%
+
++
+Portfolio Gap × 10%
+
++
+Sales Performance × 10%
+
++
+Strategic Value × 5%
+```
+
+---
+
+# 64. Client Fit内部算法
+
+Client Fit：
+
+```text
+Category Fit × 20%
+Audience Fit × 20%
+Brand Fit × 15%
+Price Fit × 15%
+Portfolio Fit × 15%
+Market Fit × 15%
+```
+
+---
+
+# 65. 两套评分不要混淆
+
+必须同时存在：
+
+## Fit Score
+
+> **这个产品适不适合这个客户？**
+
+---
+
+## Product Intelligence Score
+
+> **这个产品本身值不值得SHAKI重点推广？**
+
+---
+
+## Potential Score
+
+> **这个产品对这个客户有没有潜在增长机会？**
+
+最终业务员看到：
+
+```text
+FIT
+94
+
+PRODUCT
+91
+
+POTENTIAL
+96
+```
+
+这三个数字解决三个不同问题。
+
+---
+
+# 66. 产品卡最终结构
+
+内部：
+
+```text
+SHAKI XXXX
+
+FIT SCORE
+94
+
+PRODUCT SCORE
+91
+
+POTENTIAL
+96
+
+Category
+Female
+
+Style
+Minimal / Premium
+
+Price
+Premium
+
+Why We Recommend
+
+...
+
+[Add to Proposal]
+```
+
+---
+
+# 67. AI推荐理由模板
+
+必须生成：
+
+### Why this product?
+
+**Client Insight**
+
+客户目前……
+
+**Product Fit**
+
+该产品……
+
+**Business Opportunity**
+
+因此可以……
+
+---
+
+## English
+
+**Why this product?**
+
+**Client Insight**
+
+The client currently focuses on...
+
+**Product Fit**
+
+This product offers...
+
+**Business Opportunity**
+
+It could help the client...
+
+---
+
+# 68. AI产品推荐禁止事项
+
+AI不能说：
+
+> “This is our best-selling product.”
+
+除非数据库存在真实销售数据。
+
+不能说：
+
+> “This product is trending in the US.”
+
+除非有对应市场数据来源。
+
+不能说：
+
+> “Your customers will love it.”
+
+因为这是不可验证的主观判断。
+
+应该：
+
+> “The product appears relevant to the client's current premium positioning.”
+
+---
+
+# 69. AI自动生成销售话术
+
+根据客户自动生成：
+
+### 中文
+
+> 为什么推荐这款
+
+### English
+
+> Why We Recommend It
+
+### Email Subject
+
+> SHAKI Product Recommendations for [Client]
+
+### WhatsApp
+
+> Hi [Name], based on your current product range, we selected several SHAKI products that we believe could fit your portfolio...
+
+---
+
+# 70. AI自动生成产品组合
+
+业务员可以输入：
+
+> 为这个客户选择5款产品。
+
+AI自动组合：
+
+```text
+01 Hero Product
+02 Best Match
+03 Growth Product
+04 Portfolio Gap
+05 Strategic Product
+```
+
+避免：
+
+> 五款产品都是一个类型。
+
+---
+
+# 71. Bundle Intelligence
+
+建立：
+
+```text
+Starter Bundle
+入门组合
+
+Premium Bundle
+高端组合
+
+Couples Bundle
+夫妻组合
+
+Wellness Bundle
+健康生活方式组合
+
+Gift Bundle
+礼赠组合
+
+Travel Bundle
+旅行组合
+```
+
+---
+
+# 72. 产品交叉销售
+
+例如：
+
+```text
+Main Product
++
+Lubricant
++
+Cleaning Product
++
+Gift Packaging
+```
+
+AI可以生成：
+
+> Recommended Product Ecosystem
+
+而不是单品销售。
+
+---
+
+# 73. 客户专属产品组合
+
+最终可以形成：
+
+# SHAKI × CLIENT
+
+### Curated Product Collection
+
+不是：
+
+> “我们有这20款产品。”
+
+而是：
+
+> **“我们根据您的品牌，为您选择了这5款。”**
+
+这是整个系统最重要的销售价值。
+
+---
+
+# 74. 后台产品管理
+
+Product Manager可以：
+
+```text
+Create Product
+Edit Product
+Duplicate Product
+Archive Product
+Import Excel
+Upload Images
+Generate AI Tags
+Review AI Data
+Approve Product
+Set Strategic Product
+Set Bestseller
+```
+
+---
+
+# 75. AI审核机制
+
+新SKU进入：
+
+```text
+Imported
+↓
+AI Parsed
+↓
+AI Tagged
+↓
+Human Review
+↓
+Approved
+↓
+Recommendation Pool
+```
+
+不能：
+
+> Excel上传 → 直接进入AI推荐。
+
+---
+
+# 76. Human Review
+
+产品经理审核：
+
+```text
+Category ✓
+Function ✓
+Material ✓
+Audience ✓
+Price ✓
+OEM/ODM ✓
+Images ✓
+Compliance ✓
+AI Tags ✓
+```
+
+点击：
+
+**Approve Product**
+
+---
+
+# 77. AI学习闭环
+
+每次业务员行为都记录：
+
+```text
+Recommended
+↓
+Viewed
+↓
+Added to Proposal
+↓
+Shared
+↓
+Client Viewed
+↓
+Client Interested
+↓
+Sample
+↓
+Order
+```
+
+最终形成：
+
+# Product × Client Learning
+
+---
+
+# 78. 产品知识图谱
+
+未来建立：
+
+```text
+CLIENT
+│
+├── Category
+├── Audience
+├── Brand Style
+├── Market
+└── Price
+
+PRODUCT
+│
+├── Category
+├── Function
+├── Audience
+├── Style
+├── Price
+├── Market
+└── Scenario
+```
+
+然后：
+
+```text
+CLIENT
+   ↓
+MATCH
+   ↓
+PRODUCT
+   ↓
+PRODUCT RELATION
+   ↓
+BUNDLE
+```
+
+---
+
+# 79. 最终AI能力
+
+未来业务员输入：
+
+> “这个客户是美国女性健康品牌，官网偏极简高端，目前主要卖基础按摩产品。”
+
+AI直接回答：
+
+> 我建议优先推荐以下5款：
+
+### 01
+
+Fit 95
+Premium Match
+
+### 02
+
+Fit 92
+Product Line Expansion
+
+### 03
+
+Fit 90
+Growth Opportunity
+
+### 04
+
+Fit 88
+Strategic Product
+
+### 05
+
+Fit 86
+Cross-Sell Opportunity
+
+并且告诉业务员：
+
+> **为什么。**
+
+---
+
+# 80. V3最终数据闭环
+
+```text
+                    SHAKI PRODUCT INTELLIGENCE
+                              │
+                              ↓
+                       PRODUCT DATABASE
+                              │
+          ┌───────────────────┼───────────────────┐
+          ↓                   ↓                   ↓
+       Product DNA        AI Semantic Tags     Sales Data
+          │                   │                   │
+          └───────────────────┼───────────────────┘
+                              ↓
+                      MATCHING ENGINE
+                              ↓
+                       CLIENT PROFILE
+                              ↓
+                    6D CLIENT FIT SCORE
+                              ↓
+                   PRODUCT RECOMMENDATION
+                              ↓
+                     POTENTIAL PRODUCTS
+                              ↓
+                         PROPOSAL
+                              ↓
+                       CLIENT FEEDBACK
+                              ↓
+                         SALES DATA
+                              ↓
+                      AI LEARNING LOOP
+```
+
+---
+
+# 81. V3产品库建设目标
+
+第一阶段：
+
+**100 SKU**
+
+建立标准。
+
+第二阶段：
+
+**300 SKU**
+
+建立完整产品矩阵。
+
+第三阶段：
+
+**500–1000 SKU**
+
+形成SHAKI Product Intelligence。
+
+---
+
+# 82. 第一批SKU优先级
+
+不建议一次把所有SKU全部录入。
+
+第一批优先：
+
+### Tier 01
+
+爆款产品。
+
+### Tier 02
+
+新品。
+
+### Tier 03
+
+高利润产品。
+
+### Tier 04
+
+高差异化产品。
+
+### Tier 05
+
+OEM/ODM能力强的产品。
+
+---
+
+# 83. SKU优先级评分
+
+```text
+Strategic Value
+30%
+
+Commercial Potential
+25%
+
+Product Differentiation
+20%
+
+Market Potential
+15%
+
+Brand Value
+10%
+```
+
+最终：
+
+# Product Priority Score
+
+---
+
+# 84. 产品库第一阶段目标
+
+不是：
+
+> “把所有产品资料录进去。”
+
+而是：
+
+> **建立第一批高质量、可被AI真正理解的SKU。**
+
+建议先做：
+
+**50–100个核心SKU**
+
+把数据标准跑通。
+
+再批量扩展。
+
+---
+
+# 85. 最终SHAKI AI产品大脑
+
+当这个数据库建立后，SHAKI拥有的不再是一份Excel。
+
+而是一套：
+
+# SHAKI PRODUCT INTELLIGENCE GRAPH
+
+它知道：
+
+> 什么产品
+> 适合什么客户
+> 什么市场
+> 什么人群
+> 什么品牌
+> 什么价格
+> 什么场景
+> 为什么适合
+> 如何组合
+> 如何升级
+> 如何OEM/ODM
+
+最终形成：
+
+# SHAKI AI SALES OS
+
+```text
+Client
+客户
+↓
+Research
+客户研究
+↓
+Understand
+理解客户
+↓
+Match
+匹配产品
+↓
+Score
+六维评分
+↓
+Recommend
+智能推品
+↓
+Bundle
+产品组合
+↓
+Proposal
+销售方案
+↓
+Share
+客户分享
+↓
+Feedback
+客户反馈
+↓
+Learn
+AI学习
+↓
+Sell
+成交
+```
+
+---
+
+# 86. V3核心产品定义
+
+### 中文
+
+> **SHAKI Product Intelligence 是SHAKI所有产品的数字化DNA，让AI真正理解每一个SKU，并将产品知识转化为面向不同客户的智能销售能力。**
+
+### English
+
+> **SHAKI Product Intelligence transforms every SKU into structured product DNA, enabling AI to understand, match and recommend the right products for every client, market and opportunity.**
+
+---
+
+# 87. 产品团队执行标准
+
+以后SHAKI新增一个SKU：
+
+**不能只提交产品图片 + 产品名称 + 参数。**
+
+必须经过：
+
+```text
+Product Creation
+↓
+Product Intelligence Entry
+↓
+AI Tagging
+↓
+Human Verification
+↓
+Product Scoring
+↓
+Recommendation Pool
+↓
+Sales Enablement
+```
+
+这应该成为SHAKI未来新品上市的标准流程。
