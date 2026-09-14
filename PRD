@@ -1,0 +1,2339 @@
+# SHAKI AI PRODUCT MATCH
+
+## AI 外贸智能推品与客户研究平台
+
+### AI Client Intelligence & Product Matching Platform
+
+**版本 / Version：V1.1**
+**产品类型 / Product Type：B2B AI Sales Intelligence SaaS**
+**主要语言 / Languages：中文 Chinese + English**
+**核心用户 / Primary Users：SHAKI International Sales Team**
+
+---
+
+# 01. 产品定位 / Product Positioning
+
+## 中文
+
+SHAKI AI Product Match 是一个面向SHAKI外贸团队的AI客户研究、产品匹配和销售提案生成平台。
+
+业务员只需要输入：
+
+* 客户主营品类
+* 客户官网
+* 客户社交媒体
+
+AI即可自动完成：
+
+> 客户研究 → 客户画像 → 产品匹配 → 六维适配评分 → 推荐理由 → 潜力产品识别 → 产品Proposal生成 → 一键分享
+
+---
+
+## English
+
+SHAKI AI Product Match is an AI-powered client intelligence and product recommendation platform designed for SHAKI's international sales team.
+
+Sales representatives simply provide:
+
+* Client's main business categories
+* Client website
+* Social media information
+
+The system automatically performs:
+
+> Client Research → Client Profile → Product Matching → 6-Dimension Fit Score → Recommendation Reason → Opportunity Detection → Proposal Generation → One-Click Sharing
+
+---
+
+# 02. 核心用户流程 / Core User Flow
+
+```text
+LOGIN
+  ↓
+DASHBOARD
+  ↓
+NEW CLIENT
+  ↓
+CLIENT RESEARCH
+  ↓
+AI ANALYSIS
+  ↓
+CLIENT PROFILE
+  ↓
+PRODUCT MATCH
+  ↓
+6-DIMENSION SCORE
+  ↓
+RECOMMENDED PRODUCTS
+  ↓
+POTENTIAL PRODUCTS
+  ↓
+PRODUCT COMPARISON
+  ↓
+CREATE PROPOSAL
+  ↓
+EDIT PROPOSAL
+  ↓
+SHARE WITH CLIENT
+```
+
+---
+
+# 03. 双语产品原则 / Bilingual Product Principle
+
+所有用户可见文本必须支持：
+
+```text
+Chinese / 中文
+English / English
+```
+
+系统语言：
+
+```text
+zh-CN
+en-US
+```
+
+---
+
+## 3.1 默认语言
+
+根据浏览器语言自动判断。
+
+如果：
+
+```text
+navigator.language = zh-CN
+```
+
+默认：
+
+**中文**
+
+如果：
+
+```text
+navigator.language = en-US
+```
+
+默认：
+
+**English**
+
+用户可以手动切换。
+
+右上角：
+
+```text
+中文 | EN
+```
+
+---
+
+# 04. 首页 / Homepage
+
+## 页面目标
+
+让业务员在10秒内理解：
+
+> 这个系统可以帮我快速找到适合某个客户的SHAKI产品。
+
+---
+
+## Hero
+
+### 中文
+
+**找到真正适合每一个客户的产品**
+
+输入客户信息，让AI研究客户，并从SHAKI产品库中找到最适合的产品。
+
+### English
+
+**Find the Right Products for Every Client**
+
+Let AI research your client and discover the SHAKI products that fit their business, brand and market.
+
+---
+
+## 输入模块
+
+### Field 01
+
+**客户主营品类 / Main Business Categories**
+
+Placeholder：
+
+中文：
+
+> 例如：女性健康、情趣用品、美容护理、生活方式
+
+English：
+
+> e.g. Women's Wellness, Intimate Care, Beauty, Lifestyle
+
+---
+
+### Field 02
+
+**客户网站 / Client Website**
+
+Placeholder：
+
+> https://www.example.com
+
+---
+
+### Field 03
+
+**社交媒体 / Social Media**
+
+支持：
+
+* Instagram
+* Facebook
+* TikTok
+* LinkedIn
+* YouTube
+* Pinterest
+
+输入：
+
+> Paste social media URL
+
+---
+
+## CTA
+
+中文：
+
+**开始分析客户**
+
+English：
+
+**Analyze Client**
+
+---
+
+# 05. Advanced Settings
+
+默认折叠。
+
+按钮：
+
+中文：
+
+**高级筛选**
+
+English：
+
+**Advanced Options**
+
+---
+
+字段：
+
+### Target Market / 目标市场
+
+* United States / 美国
+* United Kingdom / 英国
+* Europe / 欧洲
+* Australia / 澳大利亚
+* Southeast Asia / 东南亚
+* Middle East / 中东
+* Other / 其他
+
+---
+
+### Customer Type / 客户类型
+
+* Brand / 品牌
+* Distributor / 经销商
+* Retailer / 零售商
+* Wholesaler / 批发商
+* E-commerce / 电商
+* Amazon Seller / Amazon卖家
+* Chain Store / 连锁零售
+* Boutique / 精品店
+* OEM/ODM Buyer / OEM/ODM采购商
+
+---
+
+### Recommendation Goal / 推品目标
+
+* New Product / 新品
+* Bestseller / 爆品
+* Premium / 高端
+* High Margin / 高利润
+* Product Line Expansion / 产品线扩展
+* OEM/ODM / 定制开发
+
+---
+
+# 06. 客户分析页面 / Client Analysis
+
+用户点击：
+
+**Analyze Client / 开始分析客户**
+
+进入Loading页面。
+
+---
+
+## Loading标题
+
+### 中文
+
+**正在研究您的客户**
+
+### English
+
+**Researching Your Client**
+
+---
+
+## AI过程
+
+动态显示：
+
+```text
+✓ 正在分析客户网站
+Analyzing client website
+
+✓ 正在识别品牌定位
+Identifying brand positioning
+
+✓ 正在分析产品结构
+Analyzing product portfolio
+
+✓ 正在研究市场定位
+Researching market positioning
+
+✓ 正在分析社交媒体
+Analyzing social presence
+
+✓ 正在匹配SHAKI产品
+Matching SHAKI products
+```
+
+---
+
+# 07. Client Intelligence
+
+分析完成后进入：
+
+# 客户画像 / Client Intelligence
+
+---
+
+## 7.1 Basic Information
+
+```text
+Brand
+品牌名称
+
+Market
+目标市场
+
+Business Type
+客户类型
+
+Main Categories
+主营品类
+
+Price Position
+价格定位
+```
+
+---
+
+# 08. Brand DNA
+
+标题：
+
+**品牌DNA / Brand DNA**
+
+---
+
+## Brand Positioning
+
+中文：
+
+> 高端女性健康生活方式品牌
+
+English：
+
+> Premium women's wellness lifestyle brand.
+
+---
+
+## Visual Style
+
+展示标签：
+
+```text
+Minimal
+极简
+
+Premium
+高端
+
+Feminine
+女性化
+
+Modern
+现代
+
+Wellness
+健康生活方式
+```
+
+---
+
+## Target Audience
+
+```text
+Women
+女性
+
+25–40
+年龄
+
+Mid-to-Premium
+消费层级
+```
+
+---
+
+# 09. Customer Product Portfolio
+
+展示AI识别出来的客户产品结构。
+
+例如：
+
+```text
+Vibrators          32%
+Wellness Products  25%
+Lubricants         18%
+Accessories        15%
+Others             10%
+```
+
+同时展示：
+
+**Product Line Map / 产品线地图**
+
+---
+
+# 10. Client Opportunity
+
+这是非常重要的模块。
+
+标题：
+
+### 客户机会 / Client Opportunities
+
+AI自动发现：
+
+```text
+Missing Category
+缺失品类
+
+Price Gap
+价格带空缺
+
+Functional Gap
+功能空缺
+
+Premium Opportunity
+高端产品机会
+
+New Category Opportunity
+新品类机会
+```
+
+例如：
+
+> 当前客户已有基础震动类产品，但高端多功能产品占比较低，存在Premium升级机会。
+
+English：
+
+> The client has a strong presence in entry-level vibration products, but limited premium multifunctional products, indicating a potential opportunity for premium line expansion.
+
+---
+
+# 11. Product Matching
+
+标题：
+
+# 推荐产品 / Recommended Products
+
+副标题：
+
+中文：
+
+> 基于客户品牌、产品结构、用户群体和市场定位，为您筛选出的SHAKI产品。
+
+English：
+
+> SHAKI products selected based on the client's brand, portfolio, audience and market positioning.
+
+---
+
+# 12. 推荐分类
+
+四个Tab：
+
+### Best Match
+
+**最佳匹配**
+
+当前最适合客户的产品。
+
+---
+
+### Growth Opportunity
+
+**增长机会**
+
+客户目前没有，但值得进入的产品。
+
+---
+
+### Product Line Expansion
+
+**产品线扩展**
+
+用于补充客户现有产品结构。
+
+---
+
+### Strategic Products
+
+**战略产品**
+
+SHAKI重点推广、新品或战略SKU。
+
+---
+
+# 13. 六维适配评分 / Six-Dimension Fit Score
+
+总分：
+
+# 92 / 100
+
+标签：
+
+**Excellent Match / 高度匹配**
+
+---
+
+## 六个维度
+
+### 01 Category Fit
+
+**品类适配**
+
+权重：
+
+20%
+
+判断：
+
+> 客户主营业务与产品类别是否匹配。
+
+---
+
+### 02 Audience Fit
+
+**用户适配**
+
+权重：
+
+20%
+
+判断：
+
+> 产品目标用户与客户用户群体是否匹配。
+
+---
+
+### 03 Brand Fit
+
+**品牌风格适配**
+
+权重：
+
+15%
+
+判断：
+
+> 产品设计、包装、视觉、品牌定位是否匹配。
+
+---
+
+### 04 Price Fit
+
+**价格带适配**
+
+权重：
+
+15%
+
+判断：
+
+> 产品价格与客户现有价格体系是否匹配。
+
+---
+
+### 05 Portfolio Fit
+
+**产品线适配**
+
+权重：
+
+15%
+
+判断：
+
+> 产品是否能够补充客户现有产品线，而非简单重复。
+
+---
+
+### 06 Market Fit
+
+**市场潜力**
+
+权重：
+
+15%
+
+判断：
+
+> 产品在客户所在市场的商业机会。
+
+---
+
+# 14. Score Formula
+
+```text
+Fit Score =
+Category Fit × 20%
++
+Audience Fit × 20%
++
+Brand Fit × 15%
++
+Price Fit × 15%
++
+Portfolio Fit × 15%
++
+Market Fit × 15%
+```
+
+---
+
+## Score等级
+
+### 90–100
+
+**Excellent Match / 高度匹配**
+
+### 80–89
+
+**Strong Match / 强匹配**
+
+### 70–79
+
+**Potential Match / 潜力匹配**
+
+### 60–69
+
+**Moderate Match / 一般匹配**
+
+### <60
+
+**Low Match / 低匹配**
+
+---
+
+# 15. Potential Score
+
+Fit Score解决：
+
+> “这个产品适不适合客户？”
+
+Potential Score解决：
+
+> “这个产品有没有机会成为客户未来值得尝试的产品？”
+
+---
+
+## Potential Score组成
+
+```text
+Portfolio Gap
+产品线缺口
+
+Market Opportunity
+市场机会
+
+Product Differentiation
+产品差异化
+
+Price Expansion
+价格带扩展
+
+Strategic Value
+战略价值
+```
+
+---
+
+# 16. 推荐卡 / Recommendation Card
+
+每个产品卡必须包含：
+
+```text
+Product Image
+
+Product Name
+产品名称
+
+Fit Score
+适配分
+
+Potential Score
+潜力分
+
+Category
+品类
+
+Price Position
+价格定位
+
+Key Features
+核心卖点
+
+Why We Recommend
+推荐理由
+
+[View Product]
+[Add to Proposal]
+```
+
+---
+
+# 17. 推荐理由生成规则
+
+AI不得输出泛泛的：
+
+> Great product.
+
+必须采用：
+
+### Client Fact
+
+客户事实
+
+*
+
+### Product Fact
+
+产品事实
+
+*
+
+### Business Reason
+
+商业理由
+
+---
+
+## 示例
+
+### 中文
+
+**为什么推荐**
+
+客户目前主要布局女性健康及入门级情趣产品，而该产品具备更高端的设计语言和多功能属性，可以补充客户现有产品线中的Premium产品层级，同时与品牌目前的极简视觉保持一致。
+
+---
+
+### English
+
+**Why We Recommend**
+
+The client currently focuses on women's wellness and entry-level intimate products. This product introduces a more premium design language and multifunctional positioning, helping expand the client's premium product tier while remaining consistent with its minimalist visual identity.
+
+---
+
+# 18. 产品详情 / Product Intelligence
+
+页面结构：
+
+```text
+Product Image Gallery
+
+Product Name
+
+Fit Score
+
+Potential Score
+
+Product Overview
+
+Key Features
+
+Technical Specifications
+
+Client Fit
+
+6-Dimension Score
+
+Why We Recommend
+
+Suggested Positioning
+
+Suggested Customer Segment
+
+Market Opportunity
+
+OEM / ODM Capability
+
+MOQ
+
+Lead Time
+```
+
+---
+
+# 19. AI销售问答 / AI Sales Assistant
+
+页面右侧增加：
+
+**Ask AI / AI助手**
+
+业务员可以直接输入：
+
+> 这个客户还有什么产品可以推？
+
+English：
+
+> What else can we recommend to this client?
+
+---
+
+或者：
+
+> 为什么这款比另外两款更适合这个客户？
+
+English：
+
+> Why is this product a better fit than the other two?
+
+---
+
+或者：
+
+> 给我选择3款适合这个客户的高端产品。
+
+English：
+
+> Select three premium products for this client.
+
+---
+
+# 20. 产品对比 / Product Comparison
+
+选择产品后：
+
+**Compare Products / 产品对比**
+
+表格：
+
+| Dimension       | Product A | Product B | Product C |
+| --------------- | --------: | --------: | --------: |
+| Category Fit    |        96 |        90 |        86 |
+| Audience Fit    |        94 |        92 |        88 |
+| Brand Fit       |        95 |        87 |        91 |
+| Price Fit       |        90 |        95 |        82 |
+| Portfolio Fit   |        93 |        89 |        96 |
+| Market Fit      |        92 |        90 |        94 |
+| **Fit Score**   |    **94** |    **90** |    **90** |
+| Potential Score |        88 |        94 |        97 |
+
+---
+
+# 21. Proposal Builder
+
+点击：
+
+**Create Proposal / 创建产品方案**
+
+---
+
+## 第一步
+
+选择：
+
+```text
+Single Product
+单品推荐
+
+Product Collection
+产品组合
+
+Product Line Proposal
+产品线方案
+```
+
+---
+
+# 22. Proposal结构
+
+## Cover
+
+```text
+SHAKI
+
+PRODUCT RECOMMENDATION
+
+Prepared for
+
+[Client Name]
+
+Curated by SHAKI
+```
+
+中文版本：
+
+```text
+SHAKI
+
+产品推荐方案
+
+为
+
+[客户名称]
+
+定制
+```
+
+---
+
+# 23. Proposal Page 02
+
+### About Your Brand
+
+AI生成客户画像总结。
+
+中文：
+
+> 根据我们对贵司品牌定位、产品结构及市场方向的研究……
+
+英文：
+
+> Based on our research into your brand positioning, product portfolio and market direction...
+
+---
+
+# 24. Proposal Product Page
+
+每个产品：
+
+```text
+PRODUCT 01
+
+Product Name
+
+Large Product Image
+
+Fit Score
+
+Why We Selected It
+
+Key Features
+
+Suggested Positioning
+
+Product Specifications
+```
+
+---
+
+# 25. Proposal结尾
+
+### Next Step
+
+中文：
+
+> 如果您对以上产品感兴趣，我们可以进一步提供样品、报价及OEM/ODM方案。
+
+英文：
+
+> If any of the recommended products are of interest, we would be happy to provide samples, pricing and OEM/ODM options for further discussion.
+
+CTA：
+
+**Request Sample / 索取样品**
+
+**Discuss OEM/ODM / 洽谈OEM/ODM**
+
+---
+
+# 26. Client Share Page
+
+客户最终看到的页面必须与内部后台完全不同。
+
+不要出现：
+
+> AI算法
+> 六维评分模型
+> 内部商业数据
+
+客户只看到：
+
+# A Curated Product Selection for [Client]
+
+以及：
+
+> Carefully selected based on your current product portfolio, brand positioning and market direction.
+
+---
+
+# 27. 分享功能
+
+按钮：
+
+**Share Proposal / 分享方案**
+
+生成：
+
+### Share Link
+
+```text
+SHAKI.COM/P/[unique-id]
+```
+
+---
+
+### PDF
+
+**Download PDF / 下载PDF**
+
+---
+
+### Image
+
+支持：
+
+```text
+1:1
+4:5
+16:9
+9:16
+```
+
+---
+
+# 28. Proposal状态
+
+```text
+Draft
+草稿
+
+Sent
+已发送
+
+Viewed
+已查看
+
+Interested
+感兴趣
+
+Sample Requested
+申请样品
+
+Negotiating
+洽谈中
+
+Won
+成交
+
+Lost
+未成交
+```
+
+---
+
+# 29. Client Workspace
+
+每个客户建立独立空间：
+
+```text
+Client Overview
+
+Client Intelligence
+
+Recommended Products
+
+Saved Products
+
+Proposals
+
+Activities
+
+Notes
+
+Feedback
+
+Orders
+```
+
+---
+
+# 30. Dashboard
+
+首页展示：
+
+```text
+Good afternoon, [Name]
+
+今日待跟进客户
+Clients to Follow Up
+
+────────────────
+
+CLIENTS
+客户总数
+
+ANALYZED
+已分析
+
+PROPOSALS
+已生成方案
+
+SHARED
+已发送
+
+RESPONSES
+客户回复
+
+SAMPLES
+样品需求
+
+ORDERS
+成交订单
+```
+
+---
+
+# 31. Product Library
+
+产品库后台：
+
+```text
+All Products
+全部产品
+
+New Products
+新品
+
+Best Sellers
+爆品
+
+Strategic Products
+战略产品
+
+Potential Products
+潜力产品
+```
+
+---
+
+## 产品搜索
+
+支持：
+
+```text
+Product Name
+SKU
+Category
+Feature
+Target Audience
+Market
+Price
+Tag
+```
+
+---
+
+# 32. Product Upload
+
+产品经理可以：
+
+### Manual Upload
+
+手动创建产品。
+
+### Excel Import
+
+批量导入SKU。
+
+### AI Import
+
+上传：
+
+* 产品目录
+* PDF
+* Excel
+* 图片
+
+AI自动识别并生成产品信息。
+
+---
+
+# 33. 产品数据库字段
+
+```text
+product_id
+
+sku
+
+product_name_cn
+
+product_name_en
+
+category
+
+subcategory
+
+description_cn
+
+description_en
+
+features
+
+materials
+
+size
+
+weight
+
+battery
+
+charging
+
+waterproof
+
+noise_level
+
+modes
+
+control_type
+
+packaging
+
+colors
+
+moq
+
+sample_price
+
+wholesale_price
+
+suggested_retail_price
+
+lead_time
+
+market
+
+target_audience
+
+visual_tags
+
+brand_tags
+
+scenario_tags
+
+strategic_tags
+
+product_status
+
+launch_date
+```
+
+---
+
+# 34. Customer Database
+
+```text
+customer_id
+
+company_name
+
+website
+
+country
+
+market
+
+business_type
+
+main_categories
+
+target_audience
+
+price_range
+
+brand_positioning
+
+visual_style
+
+product_portfolio
+
+social_links
+
+client_score
+
+client_status
+
+owner_id
+
+created_at
+
+updated_at
+```
+
+---
+
+# 35. Recommendation Database
+
+```text
+recommendation_id
+
+customer_id
+
+product_id
+
+category_score
+
+audience_score
+
+brand_score
+
+price_score
+
+portfolio_score
+
+market_score
+
+fit_score
+
+potential_score
+
+confidence
+
+recommendation_type
+
+recommendation_reason_cn
+
+recommendation_reason_en
+
+created_at
+```
+
+---
+
+# 36. Proposal Database
+
+```text
+proposal_id
+
+customer_id
+
+creator_id
+
+proposal_name
+
+language
+
+products
+
+template
+
+cover_image
+
+share_token
+
+share_url
+
+pdf_url
+
+status
+
+view_count
+
+created_at
+
+updated_at
+```
+
+---
+
+# 37. AI Prompt Architecture
+
+AI不要使用一个巨型Prompt。
+
+拆成多个Agent。
+
+```text
+Website Research Agent
+
+Social Research Agent
+
+Customer Profiling Agent
+
+Product Understanding Agent
+
+Product Matching Agent
+
+Scoring Agent
+
+Recommendation Agent
+
+Proposal Agent
+
+Sales Assistant Agent
+```
+
+---
+
+# 38. Customer Research Prompt
+
+系统Prompt核心：
+
+```text
+You are SHAKI's Client Intelligence Agent.
+
+Your task is to analyze a potential B2B client based on publicly available business information.
+
+Identify:
+
+1. Brand positioning
+2. Main product categories
+3. Target audience
+4. Price positioning
+5. Visual identity
+6. Product portfolio
+7. Market
+8. Business model
+9. Product gaps
+10. Potential opportunities
+
+Do not fabricate information.
+
+Clearly distinguish between:
+- Observed facts
+- Reasonable inference
+- Unknown information
+```
+
+---
+
+# 39. Product Matching Prompt
+
+```text
+You are SHAKI's Product Matching Agent.
+
+Match the client's profile with SHAKI's product catalog.
+
+Evaluate:
+
+Category Fit
+Audience Fit
+Brand Fit
+Price Fit
+Portfolio Fit
+Market Fit
+
+You must explain why each recommended product is relevant.
+
+Do not recommend products solely because they are popular.
+
+Prioritize:
+1. Client relevance
+2. Product line complementarity
+3. Brand consistency
+4. Commercial opportunity
+5. Strategic product value
+```
+
+---
+
+# 40. Recommendation Prompt
+
+```text
+Generate a concise B2B product recommendation.
+
+Structure:
+
+1. Client Fact
+2. Product Advantage
+3. Business Opportunity
+
+Avoid generic marketing language.
+
+The recommendation must be specific to the client.
+
+Language:
+{{language}}
+```
+
+---
+
+# 41. Proposal Prompt
+
+```text
+You are SHAKI's B2B Sales Proposal Agent.
+
+Create a premium product proposal for the client.
+
+Tone:
+Professional
+Premium
+Confident
+Concise
+International
+
+Avoid exaggerated claims.
+
+Focus on:
+- Product relevance
+- Product differentiation
+- Brand compatibility
+- Portfolio opportunity
+- Market potential
+```
+
+---
+
+# 42. Confidence System
+
+AI必须输出：
+
+```text
+High Confidence
+
+Medium Confidence
+
+Low Confidence
+```
+
+---
+
+### High
+
+客户网站和公开资料充足。
+
+### Medium
+
+部分信息为合理推断。
+
+### Low
+
+公开资料不足。
+
+---
+
+# 43. Evidence System
+
+推荐结果增加：
+
+**Based on**
+
+```text
+Client Website
+客户官网
+
+Product Portfolio
+产品结构
+
+Social Media
+社交媒体
+
+Market
+市场
+
+Brand Style
+品牌风格
+```
+
+内部业务员可以查看：
+
+> 为什么AI得出这个判断？
+
+---
+
+# 44. AI禁止行为
+
+AI不得：
+
+1. 编造客户信息
+2. 编造客户销量
+3. 编造客户采购量
+4. 编造SHAKI产品参数
+5. 编造MOQ
+6. 编造价格
+7. 编造市场数据
+8. 把推测描述成事实
+
+---
+
+# 45. 技术架构
+
+推荐：
+
+```text
+Frontend
+Next.js
+
+UI
+Tailwind CSS
+
+Backend
+Next.js API / Node.js
+
+Database
+PostgreSQL
+
+ORM
+Prisma
+
+Authentication
+Supabase Auth
+
+Storage
+Supabase Storage / S3
+
+Vector Database
+pgvector
+
+AI
+LLM API
+
+Web Research
+Search / Browser API
+
+PDF
+React PDF
+
+Analytics
+PostHog
+```
+
+---
+
+# 46. 系统架构
+
+```text
+                    FRONTEND
+                       │
+                       ↓
+                  API GATEWAY
+                       │
+        ┌──────────────┼──────────────┐
+        ↓              ↓              ↓
+   Client Service  Product Service  Proposal
+        │              │              │
+        └──────────────┼──────────────┘
+                       ↓
+                  AI ORCHESTRATOR
+                       │
+        ┌──────────────┼──────────────┐
+        ↓              ↓              ↓
+ Research Agent  Matching Agent  Proposal Agent
+        │              │              │
+        └──────────────┼──────────────┘
+                       ↓
+                  PostgreSQL
+                       +
+                    pgvector
+```
+
+---
+
+# 47. API设计
+
+## POST
+
+```text
+/api/client/analyze
+```
+
+输入：
+
+```json
+{
+  "website": "",
+  "categories": [],
+  "socialLinks": [],
+  "market": "",
+  "businessType": ""
+}
+```
+
+---
+
+## GET
+
+```text
+/api/client/:id
+```
+
+获取客户画像。
+
+---
+
+## POST
+
+```text
+/api/recommendations
+```
+
+生成推荐。
+
+---
+
+## GET
+
+```text
+/api/recommendations/:clientId
+```
+
+获取推荐结果。
+
+---
+
+## POST
+
+```text
+/api/proposal
+```
+
+创建Proposal。
+
+---
+
+## POST
+
+```text
+/api/proposal/:id/share
+```
+
+生成分享链接。
+
+---
+
+# 48. MVP开发范围
+
+第一阶段只做：
+
+## P0
+
+### 客户
+
+* 创建客户
+* 网站输入
+* 主营品类
+* 基础客户分析
+
+### 产品
+
+* 产品库
+* 产品标签
+* 产品搜索
+
+### AI
+
+* Customer Profile
+* Product Matching
+* 6D Score
+* Recommendation Reason
+
+### Proposal
+
+* 产品选择
+* Proposal生成
+* Share Link
+* PDF
+
+### Internationalization
+
+* 中文
+* English
+
+---
+
+# 49. 暂时不做
+
+V1不要做：
+
+* WhatsApp自动发送
+* Email自动发送
+* CRM深度集成
+* 自动报价
+* 自动订单
+* AI Agent自动谈判
+* 自动爬取所有社交平台
+* 移动App
+
+这些全部放V2。
+
+---
+
+# 50. 第一阶段核心页面
+
+开发只需要优先完成：
+
+```text
+01 Login
+
+02 Dashboard
+
+03 New Client
+
+04 Client Analysis
+
+05 Client Intelligence
+
+06 Product Recommendations
+
+07 Product Detail
+
+08 Proposal Builder
+
+09 Proposal Preview
+
+10 Share Page
+
+11 Product Library
+```
+
+---
+
+# 51. UI视觉方向
+
+SHAKI本身定位偏：
+
+**东方美学 × 现代亲密健康 × 高端产品设计**
+
+所以平台不能做成传统：
+
+> ERP / CRM / AI工具感
+
+建议：
+
+### Visual Direction
+
+**Premium B2B Intelligence**
+
+关键词：
+
+```text
+Minimal
+Premium
+Editorial
+Clean
+Sophisticated
+Data-driven
+```
+
+---
+
+# 52. UI颜色
+
+建议：
+
+### Primary
+
+SHAKI Purple
+
+### Background
+
+Warm White
+
+### Text
+
+Deep Charcoal
+
+### Secondary
+
+Soft Lavender
+
+### Accent
+
+Metallic Gold / Warm Neutral
+
+整体保持：
+
+> 紫白高级感
+
+但后台数据页面保持克制，不要过度品牌化。
+
+---
+
+# 53. 字体
+
+中文：
+
+```text
+Noto Sans SC
+```
+
+英文：
+
+```text
+Inter
+```
+
+标题可以使用更有品牌感的Display Font，但正文必须保证可读性。
+
+---
+
+# 54. 响应式
+
+必须支持：
+
+```text
+Desktop
+1440px
+
+Laptop
+1280px
+
+Tablet
+768px
+```
+
+第一阶段：
+
+**Desktop First**
+
+因为主要使用场景是外贸业务员办公电脑。
+
+---
+
+# 55. 核心交互
+
+整个产品最重要的原则：
+
+## Don't Make Sales Think.
+
+中文：
+
+> **不要让业务员思考系统怎么用。**
+
+业务员只需要：
+
+```text
+输入客户
+↓
+Analyze
+↓
+选择产品
+↓
+Create Proposal
+↓
+Share
+```
+
+---
+
+# 56. Codex开发任务拆分
+
+建议不要一次性让Codex生成整个项目。
+
+拆成：
+
+### Phase 01
+
+```text
+Initialize project
+
+Next.js
+TypeScript
+Tailwind
+Supabase
+Prisma
+i18n
+```
+
+---
+
+### Phase 02
+
+建立：
+
+```text
+Database Schema
+
+User
+Customer
+Product
+Recommendation
+Proposal
+ProposalProduct
+Activity
+```
+
+---
+
+### Phase 03
+
+开发：
+
+```text
+Dashboard
+```
+
+---
+
+### Phase 04
+
+开发：
+
+```text
+New Client
+```
+
+---
+
+### Phase 05
+
+开发：
+
+```text
+Client Intelligence
+```
+
+---
+
+### Phase 06
+
+开发：
+
+```text
+Product Library
+```
+
+---
+
+### Phase 07
+
+开发：
+
+```text
+Matching Engine
+```
+
+---
+
+### Phase 08
+
+开发：
+
+```text
+6D Scoring
+```
+
+---
+
+### Phase 09
+
+开发：
+
+```text
+Recommendation Cards
+```
+
+---
+
+### Phase 10
+
+开发：
+
+```text
+Proposal Builder
+```
+
+---
+
+### Phase 11
+
+开发：
+
+```text
+Share Page
+```
+
+---
+
+### Phase 12
+
+测试：
+
+```text
+Bilingual
+Responsive
+AI Output
+Scoring
+PDF
+Share Link
+Permissions
+```
+
+---
+
+# 57. Codex第一条总指令
+
+```text
+You are a senior full-stack engineer and product designer.
+
+Build SHAKI AI Product Match, a bilingual Chinese/English B2B AI sales intelligence platform.
+
+Product goal:
+
+Sales representatives enter:
+1. Client main business categories
+2. Client website
+3. Client social media
+
+The system analyzes the client and recommends SHAKI products based on:
+
+1. Category Fit — 20%
+2. Audience Fit — 20%
+3. Brand Fit — 15%
+4. Price Fit — 15%
+5. Portfolio Fit — 15%
+6. Market Fit — 15%
+
+The system must also generate:
+- Fit Score
+- Potential Score
+- Recommendation Reason
+- Client Profile
+- Product Proposal
+- Shareable Proposal Page
+- PDF Proposal
+
+Requirements:
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- PostgreSQL
+- Prisma
+- Supabase authentication
+- pgvector
+- Modular architecture
+- i18n
+- Chinese and English
+- Responsive desktop-first UI
+- Premium B2B visual style
+- SHAKI purple / warm white visual language
+- Strong typography
+- Clean data visualization
+- Reusable components
+- Production-ready architecture
+
+Do not build everything in one step.
+
+First create the project architecture and database schema.
+
+After implementation, provide:
+1. Files created
+2. Database schema
+3. API structure
+4. Environment variables
+5. How to run locally
+6. Next recommended development step.
+```
+
+---
+
+# 58. Codex第二阶段指令
+
+```text
+Now implement the Customer Intelligence module.
+
+Create:
+
+/clients
+/clients/new
+/clients/[id]
+
+Features:
+
+1. Create client
+2. Website URL
+3. Main categories
+4. Social media URLs
+5. Market
+6. Business type
+7. Analyze Client button
+8. Loading state
+9. Customer profile
+10. Brand DNA
+11. Product portfolio
+12. Client opportunities
+
+All UI must support Chinese and English.
+
+Do not fabricate AI data.
+
+Separate:
+Observed Facts
+Inferred Insights
+Unknown Information
+
+Use reusable components.
+```
+
+---
+
+# 59. Codex第三阶段指令
+
+```text
+Implement the Product Matching Engine.
+
+Create:
+
+Product Library
+Product Detail
+Recommendation Results
+6-Dimension Fit Score
+Potential Score
+Recommendation Reason
+
+Scoring:
+
+Category Fit 20%
+Audience Fit 20%
+Brand Fit 15%
+Price Fit 15%
+Portfolio Fit 15%
+Market Fit 15%
+
+Every recommendation must include:
+- Score
+- Confidence
+- Why We Recommend
+- Matching Factors
+
+Do not expose internal scoring logic on the client-facing proposal page.
+```
+
+---
+
+# 60. Codex第四阶段指令
+
+```text
+Implement Proposal Builder.
+
+Users can:
+
+1. Select products
+2. Reorder products
+3. Generate AI recommendation copy
+4. Edit copy
+5. Select language
+6. Preview proposal
+7. Generate share URL
+8. Generate PDF
+
+Create a premium SHAKI B2B proposal design.
+
+Support:
+Chinese
+English
+
+Proposal must be visually polished and suitable for sending directly to international clients.
+```
+
+---
+
+# 61. 最终产品体验
+
+最终业务员只需要记住一句话：
+
+# 输入客户，AI帮你找到最适合他的SHAKI产品。
+
+English：
+
+# Enter the client. Let AI find the right SHAKI products.
+
+完整流程：
+
+```text
+CLIENT
+客户
+↓
+INTELLIGENCE
+客户研究
+↓
+MATCH
+智能匹配
+↓
+SCORE
+六维评分
+↓
+OPPORTUNITY
+潜力发现
+↓
+PROPOSAL
+产品提案
+↓
+SHARE
+一键分享
+```
+
+---
+
+# 62. 产品最终定位
+
+SHAKI AI Product Match不是：
+
+**Product Catalog**
+
+也不是：
+
+**CRM**
+
+更不是：
+
+**AI Chatbot**
+
+它真正应该成为：
+
+# SHAKI AI SALES INTELLIGENCE
+
+中文：
+
+> **SHAKI AI销售智能系统**
+
+核心价值：
+
+> **让SHAKI从“向客户推产品”，升级为“根据客户，为客户设计产品组合”。**
+
+最终V3可以继续发展为：
+
+# SHAKI AI SALES OS
+
+从：
+
+**Lead → Research → Match → Proposal → Outreach → Follow-up → Sample → Order**
+
+形成完整的AI外贸销售操作系统。
