@@ -4,7 +4,6 @@ node_modules/
 .next_stale_*/
 .next_build_*/
 out/
-assemble-out.mjs
 
 # OS / editor
 .DS_Store
