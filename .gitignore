@@ -1,0 +1,12 @@
+node_modules/
+.next/
+.next_*/
+.next_stale_*/
+.next_build_*/
+out/
+assemble-out.mjs
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
