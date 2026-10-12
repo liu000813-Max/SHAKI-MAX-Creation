@@ -3,11 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --shaki-purple: #7C3AED;
+  --shaki-purple: #4B2E6D;
+  --shaki-purple2: #6E4A8E;
   --shaki-deep: #241434;
   --shaki-soft: #F4F0FC;
   --shaki-lavender: #E9E1F7;
   --shaki-accent: #C9A227;
+  --surface: #FCFAFD;
+  --panel: #F7F4F9;
+  --ink: #26212B;
+  --muted: #6B6670;
+  --success: #3E7B57;
+  --warning: #A66B00;
+  --danger: #A63D40;
 }
 
 * {
@@ -20,9 +28,9 @@ body {
 }
 
 body {
-  background-color: #FAFAF9;
-  color: #2D2D2D;
-  font-family: 'Inter', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+  background-color: var(--surface);
+  color: var(--ink);
+  font-family: 'Inter', 'Noto Sans SC', 'Microsoft YaHei', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -40,14 +48,27 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F4F0FC;
+  background: var(--shaki-soft);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D8C4F5;
+  background: var(--shaki-lavender);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #7C3AED;
+  background: var(--shaki-purple);
+}
+
+/* Print: keep brand colors when exporting proposals to PDF */
+@media print {
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  body {
+    background: #ffffff !important;
+  }
 }

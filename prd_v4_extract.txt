@@ -1,0 +1,255 @@
+[P0][Normal] SHAKI AI Matching Engine 技术PRD
+[P1][Normal] SHAKI AI Matching Engine — Technical PRD
+[P2][Normal] 500 SKU → 80 Candidates → 20 High-Match → 5 Curated Recommendations | 中英文双语
+[P3][Normal] 目标 / Goal: 把“客户研究 + 产品知识 + 六维评分 + 商业机会”变成稳定、可解释、可测试的推荐流水线，而不是一次性的LLM自由生成。 / Convert client research, product knowledge, six-dimension scoring and opportunity detection into a deterministic, explainable ranking pipeline instead of free-form LLM guessing.
+[P4][Heading 1] 1. 产品目标 / Product Goal
+[P5][List Bullet] 输入一个客户：主营品类 + 官网 + 社媒 + 市场/客户类型。 — Input: main categories + website + social URLs + market / customer type.
+[P6][List Bullet] 从500个SKU开始，经过硬过滤、语义召回、业务评分、机会评分、多样性重排，最终输出5个推荐。 — Start from 500 SKUs and end with 5 recommendations using hard filters, semantic retrieval, business scoring, opportunity scoring and diversification.
+[P7][List Bullet] 每个推荐必须输出：Fit Score、Potential Score、Confidence、Evidence、Reason。 — Every recommendation must output Fit Score, Potential Score, Confidence, Evidence and Reason.
+[P8][Heading 1] 2. 系统边界与输入 / System Boundary & Inputs
+[P9][Heading 1] 3. 推荐流水线 / Recommendation Pipeline
+[P10][Normal] 推荐引擎固定为以下七层： / The engine is fixed into seven layers:
+[P11][Heading 1] 4. 第1层：硬过滤 / Layer 1 — Hard Filters
+[P12][Normal] 特殊规则 / Special rule: 如果客户明确要“水剂”，则Water-Based优先进入候选池；但若业务目标是“丰富设备产品线”，水剂只作为Cross-Sell候选而非主推。 / Explicit client intent overrides generic popularity.
+[P13][Heading 1] 5. 第2层：语义召回 / Layer 2 — Semantic Recall
+[P14][Normal] 对通过硬过滤的SKU计算向量相似度，召回Top 80。 / Compute semantic similarity over eligible SKUs and recall Top 80.
+[P15][Normal] 推荐向量建议：pgvector 或等价向量数据库；同时保留关键词/规则召回，避免纯语义召回遗漏明确品类。 / Use pgvector or equivalent, combined with keyword/rule retrieval so explicit category intent is not lost.
+[P16][Heading 1] 6. 第3层：六维 Client Fit Score / Layer 3 — Six-Dimension Client Fit Score
+[P17][Heading 2] 6.1 Normalized score formula / 标准化公式
+[P18][Normal] 每个维度先得到0–100的子分，再做加权：
+[P19][Normal] Fit = 0.20·Category + 0.20·Audience + 0.15·Brand + 0.15·Price + 0.15·Portfolio + 0.15·Market
+[P20][Normal] 所有分数四舍五入到整数；保存原始小数分在日志中用于调参与回溯。 / Round display to integer; preserve raw decimals in logs.
+[P21][Heading 1] 7. 六维子评分规则 / Six-Dimension Scoring Rules
+[P22][Heading 2] Category Fit / 品类适配
+[P23][List Bullet] 100：Primary category直接命中客户核心品类
+[P24][List Bullet] 85：Secondary category高度相关
+[P25][List Bullet] 70：功能相关但品类不完全相同
+[P26][List Bullet] 40：仅场景相关
+[P27][List Bullet] 0：客户明确排除
+[P28][Heading 2] Audience Fit / 用户适配
+[P29][List Bullet] 100：性别 + 年龄 + 场景三项高度匹配
+[P30][List Bullet] 90：性别与场景匹配，年龄未知
+[P31][List Bullet] 75：人群相邻
+[P32][List Bullet] 50：需要明显教育
+[P33][List Bullet] 0：明显冲突
+[P34][Heading 2] Brand Fit / 品牌风格
+[P35][List Bullet] 100：设计风格、包装、价格定位高度一致
+[P36][List Bullet] 90：两项高度一致，一项中等
+[P37][List Bullet] 75：风格相容但品牌层级不完全一致
+[P38][List Bullet] 50：视觉/品牌差异明显
+[P39][List Bullet] 0：品牌调性冲突
+[P40][Heading 2] Price Fit / 价格带
+[P41][List Bullet] 100：产品落在客户历史价格走廊中部
+[P42][List Bullet] 90：接近走廊边界
+[P43][List Bullet] 75：略高/略低但有商业逻辑
+[P44][List Bullet] 50：明显跨档
+[P45][List Bullet] 0：不符合采购逻辑
+[P46][Heading 2] Portfolio Fit / 产品线
+[P47][List Bullet] 100：补足明确空缺且不重复
+[P48][List Bullet] 90：补足近邻空缺
+[P49][List Bullet] 75：存在部分重叠但仍有差异
+[P50][List Bullet] 50：高度重复
+[P51][List Bullet] 0：完全重复且无新增价值
+[P52][Heading 2] Market Fit / 市场
+[P53][List Bullet] 100：目标市场优先 + 合规信息完整 + 需求高
+[P54][List Bullet] 90：市场匹配但数据不完整
+[P55][List Bullet] 75：市场可进入但机会一般
+[P56][List Bullet] 50：市场证据弱
+[P57][List Bullet] 0：明确不可进入
+[P58][Heading 1] 8. 第4层：Potential Score / Layer 4 — Potential Score
+[P59][Normal] Potential = 0.25·Gap + 0.25·MarketOpp + 0.20·Diff + 0.15·PriceExp + 0.15·Strategic
+[P60][Heading 1] 9. 第5层：最终推荐分 / Layer 5 — Final Recommendation Score
+[P61][Normal] Final Recommendation Score用于对20个高匹配候选继续排序：
+[P62][Normal] Final = 0.40·Fit + 0.20·ProductIntelligence + 0.15·MarketOpportunity + 0.10·PortfolioGap + 0.10·SalesPerformance + 0.05·StrategicValue
+[P63][List Bullet] 新品没有Sales Performance时，不罚分；改用Design Value + Differentiation + Market Opportunity + Brand Value的冷启动代理分。 — For new products with no sales history, do not penalize. Use a cold-start proxy instead.
+[P64][Heading 1] 10. 第6层：多样性重排 / Layer 6 — Diversity Rerank
+[P65][Normal] 禁止Top 5全部是同一品类或同一视觉风格。 / Do not allow all Top 5 to collapse into one category or one visual style.
+[P66][Heading 1] 11. 第7层：最终5款策展逻辑 / Layer 7 — Final Top 5 Curation
+[P67][Normal] 默认组合结构：
+[P68][Normal] 若某角色没有合格SKU，回退到Final Score最高且满足最小Fit阈值的候选。 / If a role has no qualified SKU, fall back to the highest-ranked candidate that satisfies minimum Fit thresholds.
+[P69][Heading 1] 12. 置信度 Confidence / Confidence Model
+[P70][Heading 1] 13. 证据系统 Evidence / Evidence System
+[P71][Normal] 每条推荐至少保留2类证据，优先顺序：Client Website → Client Product Portfolio → Social → Market Research → Internal Product Master。
+[P72][Heading 1] 14. Prompt Architecture / Prompt Architecture
+[P73][Normal] Website Research Agent / Extract brand, category, price, audience, product portfolio and factual evidence.
+[P74][Normal] Social Research Agent / Extract content themes, style, audience and engagement topics from accessible public profiles.
+[P75][Normal] Customer Profiling Agent / Convert research into structured Client Intelligence with facts / inference / unknown separation.
+[P76][Normal] Product Understanding Agent / Convert each SKU into Product DNA from master data + approved AI tags.
+[P77][Normal] Product Matching Agent / Retrieve and rank candidates using client-product similarity and hard constraints.
+[P78][Normal] Scoring Agent / Compute six Client Fit dimensions and Potential Score using fixed formulas.
+[P79][Normal] Opportunity Agent / Identify category gaps, price gaps, premium opportunities and cross-sell opportunities.
+[P80][Normal] Recommendation Agent / Create reasons, recommendation type, confidence and evidence.
+[P81][Normal] Proposal Agent / Generate client-ready bilingual proposal copy without exposing internal scores.
+[P82][Normal] Sales Assistant Agent / Answer business-user questions using current client + product context.
+[P83][Heading 1] 15. Core Prompt / Core Prompt
+[P84][Normal] You are SHAKI Product Matching Agent.
+[P85][Normal] Use only verified Product Master fields for product facts.
+[P86][Normal] Use client research evidence for client facts.
+[P87][Normal] Separate observed facts from inferences and unknowns.
+[P88][Normal] Never invent product parameters, MOQ, price, certification, sales or customer demand.
+[P89][Normal] Apply hard filters before ranking.
+[P90][Normal] Compute six Client Fit dimensions using the fixed weights.
+[P91][Normal] Compute Potential Score separately from Fit Score.
+[P92][Normal] Prefer complementarity over duplication.
+[P93][Normal] Output structured JSON only.
+[P94][Heading 1] 16. JSON输出格式 / JSON Output Schema
+[P95][Normal] {
+[P96][Normal] "client_id": "CL-0001",
+[P97][Normal] "analysis_version": "match-v1",
+[P98][Normal] "summary": {
+[P99][Normal] "positioning": "Premium women's wellness",
+[P100][Normal] "market": ["US"],
+[P101][Normal] "confidence": "High"
+[P102][Normal] },
+[P103][Normal] "recommendations": [
+[P104][Normal] {
+[P105][Normal] "product_id": "PRD-001",
+[P106][Normal] "sku": "SHAKI-XXXX",
+[P107][Normal] "recommendation_type": "Best Match",
+[P108][Normal] "fit_score": 94,
+[P109][Normal] "potential_score": 90,
+[P110][Normal] "product_intelligence_score": 91,
+[P111][Normal] "final_score": 92,
+[P112][Normal] "confidence": "High",
+[P113][Normal] "six_dimension": {
+[P114][Normal] "category_fit": 96,
+[P115][Normal] "audience_fit": 95,
+[P116][Normal] "brand_fit": 94,
+[P117][Normal] "price_fit": 90,
+[P118][Normal] "portfolio_fit": 93,
+[P119][Normal] "market_fit": 92
+[P120][Normal] },
+[P121][Normal] "why_recommend": {
+[P122][Normal] "client_fact": "...",
+[P123][Normal] "product_fact": "...",
+[P124][Normal] "business_reason": "..."
+[P125][Normal] },
+[P126][Normal] "evidence": [
+[P127][Normal] {"type": "client_website", "claim": "..."},
+[P128][Normal] {"type": "product_master", "claim": "..."}
+[P129][Normal] ],
+[P130][Normal] "related_products": {
+[P131][Normal] "cross_sell": [],
+[P132][Normal] "upsell": [],
+[P133][Normal] "alternative": []
+[P134][Normal] }
+[P135][Normal] }
+[P136][Normal] ]
+[P137][Normal] }
+[P138][Heading 1] 17. 异常与兜底 / Errors & Fallbacks
+[P139][Heading 1] 18. 可测试Acceptance Criteria / Acceptance Criteria
+[P140][List Bullet] 500 valid SKUs → hard filters are deterministic and reproducible.
+[P141][List Bullet] 80 recalled candidates are traceable to retrieval scores.
+[P142][List Bullet] Every Fit Score can be recomputed from stored six-dimension subscores.
+[P143][List Bullet] Potential Score never overwrites Fit Score.
+[P144][List Bullet] Final Top 5 contains no more than 2 of the same secondary category unless explicitly justified.
+[P145][List Bullet] Every recommendation reason references at least one client fact and one product fact.
+[P146][List Bullet] AI never invents unverified commercial fields.
+[P147][List Bullet] Chinese/English outputs remain semantically equivalent.
+[P148][List Bullet] New SKU with no sales history remains eligible if Data Completeness and Fit thresholds are met.
+[P149][Heading 1] 19. 版本与参数管理 / Versioning & Parameters
+[P150][Normal] 所有权重、阈值、标签枚举和Prompt版本必须配置化，不写死在前端。 / All weights, thresholds, tag enums and prompt versions must be configurable and not hard-coded in the frontend.
+TABLE 0 START
+输入 / Input | 必需 / Required | 数据类型 / Type | 来源 / Source
+Client Main Categories / 客户主营品类 | Yes | Text + multi-select | Sales user
+Client Website / 客户官网 | Yes | URL | Sales user
+Social URLs / 社媒链接 | Recommended | URL list | Sales user
+Target Market / 目标市场 | Recommended | Enum | Sales user / inferred
+Business Type / 客户类型 | Optional | Enum | Sales user / inferred
+Research Snapshot / 研究快照 | System | Structured JSON | Research agents
+Product Master / 产品主库 | System | Structured rows | Product Intelligence database
+TABLE 0 END
+TABLE 1 START
+Step | Layer | Output | Purpose
+0 | Ingest / 接收 | 校验客户输入与产品数据版本 | Validate client input and catalog version
+1 | Hard Filter / 硬过滤 | 500 → ≤250 | Remove impossible / invalid SKUs
+2 | Semantic Recall / 语义召回 | ≤250 → 80 | Retrieve by client × product semantic similarity
+3 | Feature Scoring / 特征评分 | 80 → 20 | Compute six-dimensional Client Fit
+4 | Opportunity Scoring / 机会评分 | 20 → 12–15 | Compute Potential and business opportunity
+5 | Diversity Rerank / 多样性重排 | 12–15 → 8–10 | Prevent category/brand/style duplication
+6 | Final Curation / 最终策展 | 8–10 → 5 | Select portfolio-balanced Top 5
+TABLE 1 END
+TABLE 2 START
+Rule | 中文 | English
+Product Status | 必须 Active / New / Best Seller / Strategic / Coming Soon | Exclude discontinued / unavailable SKUs
+Data Completeness | ≥75 | Below 75 is not recommendation eligible
+Compliance | target market compliance = verified OR unknown-with-review flag | Do not assert unsupported compliance
+Category Conflict | 产品类别与客户明确要求不存在硬冲突 | No explicit contradiction
+Commercial Availability | MOQ / production / OEM data must exist when requested | Required for commercial-intent recommendations
+Explicit Exclusion | 客户明确“不需要/已有类似”时降级或排除 | User-provided exclusions override AI preference
+TABLE 2 END
+TABLE 3 START
+Embedding Block | Weight | 内容 / Content
+Client Category & Business | 25% | 主营品类、商业模式、渠道
+Audience | 20% | 目标性别、年龄、人群、用户成熟度
+Brand & Visual DNA | 20% | 极简/高端/女性化/科技/健康生活方式等
+Product Portfolio | 15% | 客户已有SKU、缺口、价格层级
+Market | 10% | 国家/地区、市场定位、趋势
+Commercial Intent | 10% | 新品/高端/高利润/OEM-ODM等
+TABLE 3 END
+TABLE 4 START
+Dimension | Weight | Operational Definition
+Category Fit / 品类适配 | 20% | 客户主营品类与SKU主/次品类、功能类别重合程度
+Audience Fit / 用户适配 | 20% | 性别、年龄、用户成熟度、使用场景匹配
+Brand Fit / 品牌风格 | 15% | 视觉、设计、包装、品牌定位一致性
+Price Fit / 价格带 | 15% | 客户价格走廊与SKU价格层级重合度
+Portfolio Fit / 产品线 | 15% | 补位优于重复；缺口越清晰越高
+Market Fit / 市场 | 15% | SKU目标市场、合规状态、趋势与客户市场匹配
+TABLE 4 END
+TABLE 5 START
+Factor | Weight | Rule
+Portfolio Gap / 产品线缺口 | 25% | 越能填补客户明确缺失的类别/价格层，越高
+Market Opportunity / 市场机会 | 25% | 目标市场需求/趋势/渠道适配越强越高
+Differentiation / 产品差异化 | 20% | 与客户现有SKU和同类竞品的差异化越强越高
+Price Expansion / 价格带扩展 | 15% | 能否帮助客户打开更高客单/新的价格梯度
+Strategic Value / 战略价值 | 15% | 新品、品牌代表性、OEM/ODM价值等
+TABLE 5 END
+TABLE 6 START
+Constraint | Rule | Reason
+Same secondary category | 默认≤2 in Top 5 | Assortment diversity
+Same price level | 默认≤3 in Top 5 | Price ladder diversity
+Same design cluster | 默认≤3 in Top 5 | Visual diversity
+Cross-sell inclusion | 若客户有明确产品线缺口，至少1款来自Gap | Opportunity discovery
+Strategic product | 若存在高Potential且Fit≥75，至少考虑1款 | New-product discovery
+TABLE 6 END
+TABLE 7 START
+Slot | Role / 角色 | Selection Rule
+01 | Best Match / 最佳匹配 | Highest Final Score with Confidence High
+02 | Best Match / 最佳匹配 | Second-highest non-duplicate
+03 | Growth Opportunity / 增长机会 | Highest Potential with Fit ≥80
+04 | Product Line Expansion / 产品线扩展 | Best Portfolio Gap with Fit ≥75
+05 | Strategic Product / 战略产品 | Strategic / New / Innovation with Fit ≥75
+TABLE 7 END
+TABLE 8 START
+Level | Criteria | Display
+High / 高 | Website + product portfolio + market evidence sufficient; core fields observed | High Confidence / 高可信
+Medium / 中 | Some inferred fields; no hard contradiction | Medium Confidence / 中可信
+Low / 低 | Public evidence sparse or major fields inferred | Low Confidence / 低可信
+TABLE 8 END
+TABLE 9 START
+Evidence Type | Examples / 示例
+Observed Fact / 事实 | Client sells premium wellness products
+Product Fact / 产品事实 | SKU has dual motor, premium design, OEM available
+Business Inference / 商业推断 | Could fill premium multifunctional gap
+Unknown / 未知 | Client purchase volume not publicly verified
+TABLE 9 END
+TABLE 10 START
+Scenario / 场景 | System Behavior / 系统行为
+Website inaccessible | Use provided categories + social + manually entered info; lower confidence
+No social data | Continue without social layer; do not fabricate audience insights
+Less than 20 eligible candidates | Return all qualified candidates and explain limited coverage
+No candidate reaches Fit 75 | Show top 5 with Low/Medium confidence + “limited match” banner
+No candidate has sufficient commercial data | Hide price/MOQ claims and allow “request quote” CTA only
+AI timeout | Use last successful research snapshot if available; otherwise return retry state
+TABLE 10 END
+TABLE 11 START
+Config | Default | Change Owner
+match_pipeline_version | v1 | Product + Engineering
+hard_filter_data_completeness | 75 | Product
+semantic_recall_count | 80 | Product/AI
+high_match_count | 20 | Product/AI
+final_recommendation_count | 5 | Product
+same_category_top5_limit | 2 | Product
+fit_minimum_fallback | 75 | Product/AI
+prompt_version | prompt-v1 | AI/Engineering
+TABLE 11 END

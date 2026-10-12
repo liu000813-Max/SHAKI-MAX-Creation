@@ -5,6 +5,7 @@ import { useAppState } from '@/components/ClientProvider';
 import { t } from '@/lib/i18n';
 import { ScoreRing } from '@/components/ScoreRing';
 import { categoryNames, priceLevelNames, productStatusNames } from '@/lib/data/products';
+import { hasAiScores, hasCommercialData } from '@/lib/dataPresence';
 import { Product } from '@/lib/types';
 import { localizeProductField } from '@/lib/utils';
 import { ArrowLeft, Package, Ruler, Zap, Globe, Factory, Clock, DollarSign, Award, CheckCircle2, Box } from 'lucide-react';
@@ -17,11 +18,19 @@ export default function ProductDetailClient({ product }: { product: Product }) {
   const short = localizeProductField(product, lang, 'short_description');
   const ksp = localizeProductField(product, lang, 'key_selling_point');
 
-  const aiScore = product.ai_scores.total;
+  // Optional: a product that was never evaluated has no scores, and the gate below says so
+  // rather than printing zeros.
+  const aiScore = product.ai_scores?.total;
+
+  // Presence, not truthiness. A crawled row that cleared the completeness gate carries `{}` for both
+  // `ai_scores` and `commercial`, so rendering either without asking first would print a dashboard of
+  // zeros and dashes for a product we simply have no terms or scores for (PRD TABLE 10).
+  const scored = hasAiScores(product);
+  const commercial = hasCommercialData(product);
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-8">
-      <Link href="/library" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-shaki-purple mb-6">
+      <Link href="/catalog" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-shaki-purple mb-6">
         <ArrowLeft className="w-4 h-4" />
         {t('productLibrary', lang)}
       </Link>
@@ -51,7 +60,13 @@ export default function ProductDetailClient({ product }: { product: Product }) {
           </div>
 
           <div className="flex items-center gap-6">
-            <ScoreRing score={aiScore} label={t('sixDimensionScore', lang)} />
+            {scored ? (
+              <ScoreRing score={aiScore ?? 0} label={t('sixDimensionScore', lang)} />
+            ) : (
+              <span className="shrink-0 px-3 py-1.5 bg-panel border border-shaki-lavender rounded-lg text-xs font-medium text-muted">
+                {t('noScoreYet', lang)}
+              </span>
+            )}
             <div className="flex-1">
               <p className="text-sm text-gray-500 mb-2">{t('productOverview', lang)}</p>
               <p className="text-sm text-gray-700 leading-relaxed">{desc}</p>
@@ -70,10 +85,24 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <Info label={t('moq', lang)} value={product.moq || '-'} icon={Box} />
-            <Info label={t('leadTime', lang)} value={product.lead_time || '-'} icon={Clock} />
-            <Info label={t('price', lang)} value={product.wholesale_price ? `$${product.wholesale_price}` : '-'} icon={DollarSign} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {commercial ? (
+              <>
+                <Info label={t('moq', lang)} value={product.moq} icon={Box} />
+                {product.lead_time && <Info label={t('leadTime', lang)} value={product.lead_time} icon={Clock} />}
+                <Info label={t('price', lang)} value={`$${product.wholesale_price}`} icon={DollarSign} />
+              </>
+            ) : (
+              // No terms on file. PRD TABLE 10: hide them and offer the one action that can fill the
+              // gap, rather than printing "MOQ: -" and letting the reader wonder if it is zero.
+              <div className="col-span-2 flex items-start gap-3 p-4 bg-shaki-soft/50 rounded-xl border border-shaki-lavender">
+                <DollarSign className="w-5 h-5 text-shaki-purple shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-sm font-semibold text-shaki-deep">{t('requestQuote', lang)}</p>
+                  <p className="text-xs text-muted mt-0.5 leading-relaxed">{t('requestQuoteHint', lang)}</p>
+                </div>
+              </div>
+            )}
             <Info label={t('targetMarket', lang)} value={product.target_market.join(', ')} icon={Globe} />
           </div>
         </div>
@@ -106,9 +135,18 @@ export default function ProductDetailClient({ product }: { product: Product }) {
           <Spec label="ODM" value={product.odm_available ? (lang === 'zh' ? '支持' : 'Available') : (lang === 'zh' ? '不支持' : 'Not Available')} />
           <Spec label={lang === 'zh' ? '定制 MOQ' : 'Custom MOQ'} value={product.custom_moq} />
           <Spec label={lang === 'zh' ? '定制交期' : 'Custom Lead Time'} value={product.custom_lead_time} />
-          <Spec label={lang === 'zh' ? '产能' : 'Capacity'} value={product.commercial.production_capacity} />
-          <Spec label={lang === 'zh' ? '库存状态' : 'Stock Status'} value={product.commercial.stock_status} />
+          <Spec label={lang === 'zh' ? '产能' : 'Capacity'} value={product.commercial?.production_capacity} />
+          <Spec label={lang === 'zh' ? '库存状态' : 'Stock Status'} value={product.commercial?.stock_status} />
         </Section>
+
+        {product.source_url ? (
+          <p className="mt-3 text-xs text-muted">
+            {lang === 'zh' ? '来源：' : 'Source: '}
+            <a href={product.source_url} target="_blank" rel="noopener noreferrer" className="text-shaki-purple hover:underline">
+              {product.source_url}
+            </a>
+          </p>
+        ) : null}
       </div>
 
       <div className="mt-8 bg-white rounded-2xl border border-shaki-lavender shadow-sm p-6">
@@ -116,14 +154,20 @@ export default function ProductDetailClient({ product }: { product: Product }) {
           <Award className="w-5 h-5 text-shaki-purple" />
           <h3 className="text-base font-semibold text-shaki-deep">{lang === 'zh' ? 'AI 产品评分' : 'AI Product Score'}</h3>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          <ScoreRing score={product.ai_scores.product_quality} label={lang === 'zh' ? '产品力' : 'Product Quality'} size={72} />
-          <ScoreRing score={product.ai_scores.design_value} label={lang === 'zh' ? '设计价值' : 'Design Value'} size={72} />
-          <ScoreRing score={product.ai_scores.functional_differentiation} label={lang === 'zh' ? '功能差异化' : 'Differentiation'} size={72} />
-          <ScoreRing score={product.ai_scores.commercial_potential} label={lang === 'zh' ? '商业潜力' : 'Commercial Potential'} size={72} />
-          <ScoreRing score={product.ai_scores.market_adaptability} label={lang === 'zh' ? '市场适应性' : 'Market Adaptability'} size={72} />
-          <ScoreRing score={product.ai_scores.brand_value} label={lang === 'zh' ? '品牌价值' : 'Brand Value'} size={72} />
-        </div>
+        {scored ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <ScoreRing score={product.ai_scores!.product_quality} label={lang === 'zh' ? '产品力' : 'Product Quality'} size={72} />
+            <ScoreRing score={product.ai_scores!.design_value} label={lang === 'zh' ? '设计价值' : 'Design Value'} size={72} />
+            <ScoreRing score={product.ai_scores!.functional_differentiation} label={lang === 'zh' ? '功能差异化' : 'Differentiation'} size={72} />
+            <ScoreRing score={product.ai_scores!.commercial_potential} label={lang === 'zh' ? '商业潜力' : 'Commercial Potential'} size={72} />
+            <ScoreRing score={product.ai_scores!.market_adaptability} label={lang === 'zh' ? '市场适应性' : 'Market Adaptability'} size={72} />
+            <ScoreRing score={product.ai_scores!.brand_value} label={lang === 'zh' ? '品牌价值' : 'Brand Value'} size={72} />
+          </div>
+        ) : (
+          // Six rings fed `undefined` would each fall through to the lowest band and paint red,
+          // reporting "this product scores badly" when the truth is "we have never scored it".
+          <p className="text-sm text-muted leading-relaxed">{t('noScoreHint', lang)}</p>
+        )}
       </div>
     </div>
   );

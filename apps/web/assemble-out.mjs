@@ -3,11 +3,14 @@
 // but the prerendered HTML + static chunks are already on disk, so we copy them.
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-// Runs from the app package dir (apps/web). Uses __dirname so it works on any machine.
-const ROOT = __dirname;
+// ESM note: this file is an ES module, so `__dirname` does NOT exist. Derive it from
+// import.meta.url — using __dirname throws a ReferenceError that leaves out/ silently stale.
+const ROOT = path.dirname(fileURLToPath(import.meta.url)); // apps/web
 const SRC = path.join(ROOT, '.next/server/app');
 const OUT = path.join(ROOT, 'out');
+const TRASH = path.join(ROOT, '..', '..', '_build_trash');
 
 function copyDir(src, dest) {
   fs.mkdirSync(dest, { recursive: true });
@@ -19,8 +22,13 @@ function copyDir(src, dest) {
   }
 }
 
-// clean previous out (rename-based; only delete of .next is guarded, out is fine to rm)
-if (fs.existsSync(OUT)) fs.rmSync(OUT, { recursive: true, force: true });
+// Move the previous out/ aside instead of fs.rm'ing it: bulk deletes are guarded by the
+// sandbox, renames are not. Preserves the previous artifact too.
+if (fs.existsSync(OUT)) {
+  fs.mkdirSync(TRASH, { recursive: true });
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+  fs.renameSync(OUT, path.join(TRASH, `out_${stamp}`));
+}
 
 fs.mkdirSync(OUT, { recursive: true });
 

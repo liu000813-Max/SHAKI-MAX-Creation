@@ -1,0 +1,1386 @@
+[P0][Normal] SHAKI AI Product Match UI/UX Design Spec
+[P1][Normal] SHAKI AI Product Match — UI/UX Design Specification
+[P2][Normal] Desktop 1440px | Figma-ready + Codex-ready | 中英文双语
+[P3][Heading 1] 1. 设计目标 / Design Goal
+[P4][Normal] 核心体验不是“聊天”，而是“输入客户 → AI完成研究 → 快速挑选产品 → 一键形成客户提案”。 / The core experience is not chat-first; it is client-first, recommendation-first and proposal-first.
+[P5][Heading 1] 2. 视觉方向 / Visual Direction
+[P6][Normal] 字体建议 / Font: Inter + Microsoft YaHei / Noto Sans SC. Desktop 1440px first, minimum supported 1280px.
+[P7][Heading 1] 3. 布局系统 / Layout System
+[P8][Heading 1] 4. 全局组件 / Global Components
+[P9][Heading 1] 5. 页面地图 / Page Map
+[P10][Heading 1] 6. P01 登录 / P01 Login
+[P11][Normal] 目的 / Purpose: 快速进入系统。 / Fast entry.
+[P12][Normal] 1440px布局 / Layout: Centered auth card, logo top, language switch top-right.
+[P13][Heading 1] 7. P02 工作台 / P02 Dashboard
+[P14][Normal] 目的 / Purpose: 让业务员看到今日机会和最近客户。 / Surface today’s opportunities and recent clients.
+[P15][Normal] 1440px布局 / Layout: 240px sidebar + 64px topbar + 1200px content; KPI row + recent clients + opportunity cards.
+[P16][Heading 1] 8. P03 新客户 / P03 New Client
+[P17][Normal] 目的 / Purpose: 核心入口：客户主营品类 + 官网 + 社媒。 / Core input.
+[P18][Normal] 1440px布局 / Layout: Two-column: left 720px input form, right 360px “What AI will analyze”.
+[P19][Heading 1] 9. P04 客户研究中 / P04 Researching
+[P20][Normal] 目的 / Purpose: 给用户可解释的进度感。 / Provide transparent progress.
+[P21][Normal] 1440px布局 / Layout: Centered progress panel + research steps + estimated phase labels; no fake percentages.
+[P22][Heading 1] 10. P05 客户情报 / P05 Client Intelligence
+[P23][Normal] 目的 / Purpose: 让业务员确认“AI理解的客户”。 / Let sales verify the client interpretation before recommendations.
+[P24][Normal] 1440px布局 / Layout: Top client summary; 3-column intelligence cards; product portfolio map; opportunities panel.
+[P25][Heading 1] 11. P06 推荐结果 / P06 Recommendations
+[P26][Normal] 目的 / Purpose: 核心工作页：让业务员快速从20个高匹配中选5个。 / Core decision page.
+[P27][Normal] 1440px布局 / Layout: Top summary strip + filter bar + 2/3 product grid + right-side shortlist panel.
+[P28][Heading 1] 12. P07 产品智能 / P07 Product Intelligence
+[P29][Normal] 目的 / Purpose: 展示SKU事实、产品分数和针对当前客户的解释。 / Show verified SKU facts, scores and client-specific reasoning.
+[P30][Normal] 1440px布局 / Layout: Left 56% media gallery + right 44% product intelligence; lower section for score breakdown and evidence.
+[P31][Heading 1] 13. P08 产品对比 / P08 Compare
+[P32][Normal] 目的 / Purpose: 帮助业务员在2–5款产品中做最后选择。 / Final decision support across 2–5 products.
+[P33][Normal] 1440px布局 / Layout: Sticky comparison header + rows grouped by Fit, Commercial, Product, Customization.
+[P34][Heading 1] 14. P09 方案编辑 / P09 Proposal Builder
+[P35][Normal] 目的 / Purpose: 把推荐变成客户可直接接收的方案。 / Turn recommendations into a client-ready proposal.
+[P36][Normal] 1440px布局 / Layout: Left 70% editable canvas + right 30% controls; drag reorder.
+[P37][Heading 1] 15. P10 方案预览 / P10 Proposal Preview
+[P38][Normal] 目的 / Purpose: 发送前检查双语和视觉。 / Final visual and language QA.
+[P39][Normal] 1440px布局 / Layout: Full-width centered A4-like page preview with right-side action rail.
+[P40][Heading 1] 16. P11 客户分享页 / P11 Client Share
+[P41][Normal] 目的 / Purpose: 客户看到的是精选提案，不看到内部评分。 / External page hides internal scoring.
+[P42][Normal] 1440px布局 / Layout: Minimal public page; client logo/name; curated products; contact CTA; mobile-responsive.
+[P43][Heading 1] 17. P12 产品库 / P12 Product Library
+[P44][Normal] 目的 / Purpose: 让产品经理维护Product Intelligence。 / Maintain Product Intelligence.
+[P45][Normal] 1440px布局 / Layout: Filter bar + data table + right drawer for editing.
+[P46][Heading 1] 18. P13 数据分析 / P13 Analytics
+[P47][Normal] 目的 / Purpose: 看推荐与销售反馈。 / Connect recommendations with sales outcomes.
+[P48][Normal] 1440px布局 / Layout: KPI row + funnel + market chart + product leaderboard + recommendation quality panel.
+[P49][Heading 1] 19. P14 设置 / P14 Settings
+[P50][Normal] 目的 / Purpose: 账户、语言、评分配置和系统偏好。 / Account, language and configurable scoring.
+[P51][Normal] 1440px布局 / Layout: Tabbed settings.
+[P52][Heading 1] 20. 推荐卡设计规范 / Recommendation Card Spec
+[P53][Heading 1] 21. 六维评分可视化 / Six-Dimension Score Visualization
+[P54][Normal] 推荐使用横向六条分数条，不建议第一版使用复杂雷达图，以保证信息密度与可读性。 / Use six horizontal score bars rather than radar charts in V1 for clarity and density.
+[P55][Heading 1] 22. 状态系统 / State System
+[P56][Heading 1] 23. 双语文案原则 / Bilingual Copy Rules
+[P57][List Bullet] 内部操作文案优先中文，英文作为第二语言。 — Internal workflow can prioritize Chinese, with English as the paired language.
+[P58][List Bullet] 客户页面默认英文，允许切换中文。 — Client-facing pages default to English, with Chinese as an option.
+[P59][List Bullet] 同一个术语在全系统保持一致，例如“适配分 / Fit Score”。 — The same concept must use one canonical term everywhere, e.g. “Fit Score”.
+[P60][Heading 1] 24. Figma命名规范 / Figma Naming
+[P61][Heading 1] 25. Codex实现优先级 / Codex Implementation Order
+[P62][List Bullet] 01 — App shell: sidebar, topbar, i18n, design tokens.
+[P63][List Bullet] 02 — P03 New Client + API contract.
+[P64][List Bullet] 03 — P04 Researching states.
+[P65][List Bullet] 04 — P05 Client Intelligence.
+[P66][List Bullet] 05 — P06 Recommendations and score components.
+[P67][List Bullet] 06 — P07 Product Intelligence + evidence drawer.
+[P68][List Bullet] 07 — P08 Compare.
+[P69][List Bullet] 08 — P09/P10 Proposal builder + preview.
+[P70][List Bullet] 09 — P11 client-facing share page.
+[P71][List Bullet] 10 — Product Library + bulk import.
+[P72][List Bullet] 11 — Analytics and feedback loop.
+[P73][List Bullet] 12 — QA: bilingual, responsive 1280/1440, loading/error/empty states.
+[P74][Heading 1] 26. UI验收标准 / UI Acceptance Criteria
+[P75][List Bullet] At 1440px, no horizontal scroll on core pages.
+[P76][List Bullet] All core actions visible without forcing the user to open a menu.
+[P77][List Bullet] Every AI-generated recommendation has a visible reason and confidence label.
+[P78][List Bullet] No client-facing page exposes internal scores or internal notes.
+[P79][List Bullet] All pages have loading, empty, error and success states where applicable.
+[P80][List Bullet] Chinese and English do not cause clipping or layout shifts.
+[P81][List Bullet] Product cards remain readable at 1280px.
+[P82][List Bullet] Proposal can be previewed before sharing.
+[P83][List Bullet] No primary button uses ambiguous copy such as “OK”; actions are explicit.
+TABLE 0 START
+Principle | 中文 | English
+01 | 10秒理解价值 | Understand value in 10 seconds
+02 | 3步完成核心任务 | Complete core task in 3 steps
+03 | 数据解释优先 | Explain recommendations, do not just score
+04 | 客户视图与内部视图分离 | Separate internal workspace from client-facing proposal
+05 | 双语原生 | Chinese/English are first-class, not translated later
+TABLE 0 END
+TABLE 1 START
+Token | Spec | Usage
+Primary | SHAKI Purple #4B2E6D | Primary CTA, key scores, headers
+Secondary | Purple #6E4A8E | Secondary actions
+Surface | Warm White / #FCFAFD | Main canvas
+Panel | #F7F4F9 | Cards / sidebars
+Text | #26212B | Primary text
+Muted | #6B6670 | Secondary text
+Success | #3E7B57 | Verified / strong match
+Warning | #A66B00 | Medium confidence
+Error | #A63D40 | Validation / error
+TABLE 1 END
+TABLE 2 START
+Item | Spec
+Canvas | 1440px design frame
+Content max width | 1200px centered
+Grid | 12 columns / 24px gutter
+Page side padding | 48px
+Sidebar | 240px
+Topbar | 64px
+Primary content column | 840px
+Secondary/right panel | 320px
+Card radius | 14px
+Button radius | 10px
+TABLE 2 END
+TABLE 3 START
+Component | States / 状态 | Bilingual copy
+Primary Button | Default / Hover / Loading / Disabled | 开始分析客户 / Analyze Client
+Secondary Button | Default / Hover / Disabled | 查看详情 / View Details
+Score Badge | 90+ / 80–89 / 70–79 / <70 | 高度匹配 / Excellent Match
+Confidence Badge | High / Medium / Low | 高可信 / High Confidence
+Tag | Default / Active / Disabled | 极简 / Minimal
+Search | Empty / Typing / Result / No result | 搜索产品 / Search products
+Tabs | Active / Inactive | 最佳匹配 / Best Match
+Tooltip | Hover / Focus | 为什么是这个分数？ / Why this score?
+TABLE 3 END
+TABLE 4 START
+ID | Page | Purpose
+P01 | Login / 登录 | Auth
+P02 | Dashboard / 工作台 | Internal
+P03 | New Client / 新客户 | Core
+P04 | Researching / 研究中 | Core
+P05 | Client Intelligence / 客户情报 | Core
+P06 | Recommendations / 推荐结果 | Core
+P07 | Product Detail / 产品智能 | Core
+P08 | Compare / 产品对比 | Core
+P09 | Proposal Builder / 方案编辑 | Core
+P10 | Proposal Preview / 方案预览 | Core
+P11 | Client Share / 客户分享 | External
+P12 | Product Library / 产品库 | Admin/Product
+P13 | Analytics / 数据分析 | Management
+P14 | Settings / 设置 | System
+TABLE 4 END
+TABLE 5 START
+Area / 区域 | Components / 组件
+L | 
+o | 
+g | 
+o | 
+; | 
+ | 
+E | 
+m | 
+a | 
+i | 
+l | 
+; | 
+ | 
+P | 
+a | 
+s | 
+s | 
+w | 
+o | 
+r | 
+d | 
+; | 
+ | 
+R | 
+e | 
+m | 
+e | 
+m | 
+b | 
+e | 
+r | 
+ | 
+m | 
+e | 
+; | 
+ | 
+L | 
+a | 
+n | 
+g | 
+u | 
+a | 
+g | 
+e | 
+; | 
+ | 
+S | 
+i | 
+g | 
+n | 
+ | 
+i | 
+n | 
+TABLE 5 END
+TABLE 6 START
+Primary CTA / 主操作 | Secondary / 次操作
+登录 / Sign in | 忘记密码 / Forgot password
+TABLE 6 END
+TABLE 7 START
+State / 状态 | Behavior / 行为 | Copy / 文案
+Default | Ready | 欢迎使用SHAKI AI Product Match / Welcome to SHAKI AI Product Match
+Error | Inline field error | 邮箱或密码不正确 / Incorrect email or password
+Loading | Button spinner | 登录中 / Signing in
+TABLE 7 END
+TABLE 8 START
+Area / 区域 | Components / 组件
+K | 
+P | 
+I | 
+ | 
+C | 
+a | 
+r | 
+d | 
+s | 
+; | 
+ | 
+R | 
+e | 
+c | 
+e | 
+n | 
+t | 
+ | 
+C | 
+l | 
+i | 
+e | 
+n | 
+t | 
+s | 
+; | 
+ | 
+O | 
+p | 
+p | 
+o | 
+r | 
+t | 
+u | 
+n | 
+i | 
+t | 
+y | 
+ | 
+F | 
+e | 
+e | 
+d | 
+; | 
+ | 
+Q | 
+u | 
+i | 
+c | 
+k | 
+ | 
+A | 
+n | 
+a | 
+l | 
+y | 
+z | 
+e | 
+TABLE 8 END
+TABLE 9 START
+Primary CTA / 主操作 | Secondary / 次操作
+新客户 / New Client | 查看全部 / View All
+TABLE 9 END
+TABLE 10 START
+State / 状态 | Behavior / 行为 | Copy / 文案
+Empty | No clients yet | 开始添加第一个客户 / Add your first client
+Loading | Skeleton cards | 正在加载 / Loading
+Error | Inline banner | 数据加载失败 / Failed to load data
+TABLE 10 END
+TABLE 11 START
+Area / 区域 | Components / 组件
+C | 
+a | 
+t | 
+e | 
+g | 
+o | 
+r | 
+y | 
+ | 
+i | 
+n | 
+p | 
+u | 
+t | 
+; | 
+ | 
+W | 
+e | 
+b | 
+s | 
+i | 
+t | 
+e | 
+ | 
+U | 
+R | 
+L | 
+; | 
+ | 
+S | 
+o | 
+c | 
+i | 
+a | 
+l | 
+ | 
+U | 
+R | 
+L | 
+s | 
+; | 
+ | 
+M | 
+a | 
+r | 
+k | 
+e | 
+t | 
+; | 
+ | 
+C | 
+u | 
+s | 
+t | 
+o | 
+m | 
+e | 
+r | 
+ | 
+T | 
+y | 
+p | 
+e | 
+; | 
+ | 
+G | 
+o | 
+a | 
+l | 
+; | 
+ | 
+A | 
+d | 
+v | 
+a | 
+n | 
+c | 
+e | 
+d | 
+ | 
+O | 
+p | 
+t | 
+i | 
+o | 
+n | 
+s | 
+TABLE 11 END
+TABLE 12 START
+Primary CTA / 主操作 | Secondary / 次操作
+开始分析客户 / Analyze Client | 清空 / Clear
+TABLE 12 END
+TABLE 13 START
+State / 状态 | Behavior / 行为 | Copy / 文案
+Empty | All fields empty | 输入一个官网即可开始 / Enter a website to begin
+Validation | URL invalid | 请输入有效网址 / Enter a valid URL
+Loading | CTA disabled | 正在准备分析 / Preparing analysis
+TABLE 13 END
+TABLE 14 START
+Area / 区域 | Components / 组件
+P | 
+r | 
+o | 
+g | 
+r | 
+e | 
+s | 
+s | 
+ | 
+S | 
+t | 
+e | 
+p | 
+s | 
+; | 
+ | 
+R | 
+e | 
+s | 
+e | 
+a | 
+r | 
+c | 
+h | 
+ | 
+S | 
+o | 
+u | 
+r | 
+c | 
+e | 
+s | 
+; | 
+ | 
+C | 
+a | 
+n | 
+c | 
+e | 
+l | 
+; | 
+ | 
+B | 
+a | 
+c | 
+k | 
+g | 
+r | 
+o | 
+u | 
+n | 
+d | 
+ | 
+s | 
+t | 
+a | 
+t | 
+u | 
+s | 
+TABLE 14 END
+TABLE 15 START
+Primary CTA / 主操作 | Secondary / 次操作
+后台运行 / Run in background | 取消分析 / Cancel
+TABLE 15 END
+TABLE 16 START
+State / 状态 | Behavior / 行为 | Copy / 文案
+Running | Step checklist updates | 正在分析客户网站 / Analyzing client website
+Partial | Some source unavailable | 部分信息不可访问，继续使用现有资料 / Some sources unavailable; continuing
+Error | Retry card | 分析失败，重新尝试 / Analysis failed, Retry
+TABLE 16 END
+TABLE 17 START
+Area / 区域 | Components / 组件
+C | 
+l | 
+i | 
+e | 
+n | 
+t | 
+ | 
+H | 
+e | 
+a | 
+d | 
+e | 
+r | 
+; | 
+ | 
+B | 
+r | 
+a | 
+n | 
+d | 
+ | 
+D | 
+N | 
+A | 
+; | 
+ | 
+T | 
+a | 
+r | 
+g | 
+e | 
+t | 
+ | 
+A | 
+u | 
+d | 
+i | 
+e | 
+n | 
+c | 
+e | 
+; | 
+ | 
+P | 
+r | 
+i | 
+c | 
+e | 
+ | 
+P | 
+o | 
+s | 
+i | 
+t | 
+i | 
+o | 
+n | 
+; | 
+ | 
+P | 
+r | 
+o | 
+d | 
+u | 
+c | 
+t | 
+ | 
+P | 
+o | 
+r | 
+t | 
+f | 
+o | 
+l | 
+i | 
+o | 
+; | 
+ | 
+O | 
+p | 
+p | 
+o | 
+r | 
+t | 
+u | 
+n | 
+i | 
+t | 
+i | 
+e | 
+s | 
+; | 
+ | 
+E | 
+v | 
+i | 
+d | 
+e | 
+n | 
+c | 
+e | 
+ | 
+d | 
+r | 
+a | 
+w | 
+e | 
+r | 
+TABLE 17 END
+TABLE 18 START
+Primary CTA / 主操作 | Secondary / 次操作
+查看推荐产品 / View Recommendations | 编辑客户信息 / Edit Client
+TABLE 18 END
+TABLE 19 START
+State / 状态 | Behavior / 行为 | Copy / 文案
+Normal | Fully analyzed | 已理解客户 / Client understood
+Medium confidence | Show amber banner | 部分信息为推断 / Some insights are inferred
+No evidence | Lock unsupported claims | 暂无足够公开资料 / Limited public evidence
+TABLE 19 END
+TABLE 20 START
+Area / 区域 | Components / 组件
+C | 
+l | 
+i | 
+e | 
+n | 
+t | 
+ | 
+F | 
+i | 
+t | 
+ | 
+s | 
+u | 
+m | 
+m | 
+a | 
+r | 
+y | 
+; | 
+ | 
+T | 
+a | 
+b | 
+s | 
+; | 
+ | 
+F | 
+i | 
+l | 
+t | 
+e | 
+r | 
+ | 
+c | 
+h | 
+i | 
+p | 
+s | 
+; | 
+ | 
+R | 
+e | 
+c | 
+o | 
+m | 
+m | 
+e | 
+n | 
+d | 
+a | 
+t | 
+i | 
+o | 
+n | 
+ | 
+c | 
+a | 
+r | 
+d | 
+s | 
+; | 
+ | 
+S | 
+h | 
+o | 
+r | 
+t | 
+l | 
+i | 
+s | 
+t | 
+ | 
+d | 
+r | 
+a | 
+w | 
+e | 
+r | 
+TABLE 20 END
+TABLE 21 START
+Primary CTA / 主操作 | Secondary / 次操作
+创建客户方案 / Create Proposal | 比较产品 / Compare
+TABLE 21 END
+TABLE 22 START
+State / 状态 | Behavior / 行为 | Copy / 文案
+Loading | Card skeletons | 正在匹配SHAKI产品 / Matching SHAKI products
+No result | Empty state | 暂无高匹配产品 / No strong matches found
+Limited | Warning banner | 匹配范围有限 / Limited match coverage
+Success | Top 5 visible | 已找到适合客户的产品 / Products found for this client
+TABLE 22 END
+TABLE 23 START
+Area / 区域 | Components / 组件
+G | 
+a | 
+l | 
+l | 
+e | 
+r | 
+y | 
+; | 
+ | 
+P | 
+r | 
+o | 
+d | 
+u | 
+c | 
+t | 
+ | 
+D | 
+N | 
+A | 
+; | 
+ | 
+3 | 
+ | 
+S | 
+c | 
+o | 
+r | 
+e | 
+s | 
+; | 
+ | 
+S | 
+i | 
+x | 
+- | 
+d | 
+i | 
+m | 
+e | 
+n | 
+s | 
+i | 
+o | 
+n | 
+ | 
+c | 
+h | 
+a | 
+r | 
+t | 
+; | 
+ | 
+W | 
+h | 
+y | 
+ | 
+r | 
+e | 
+c | 
+o | 
+m | 
+m | 
+e | 
+n | 
+d | 
+; | 
+ | 
+S | 
+p | 
+e | 
+c | 
+s | 
+; | 
+ | 
+O | 
+E | 
+M | 
+/ | 
+O | 
+D | 
+M | 
+TABLE 23 END
+TABLE 24 START
+Primary CTA / 主操作 | Secondary / 次操作
+加入方案 / Add to Proposal | 查看替代品 / View Alternatives
+TABLE 24 END
+TABLE 25 START
+State / 状态 | Behavior / 行为 | Copy / 文案
+Verified | Green source badges | 已验证 / Verified
+Partial | Missing field placeholders | 暂无数据 / Data not available
+AI inferred | Amber tags | AI推断 / AI inferred
+TABLE 25 END
+TABLE 26 START
+Area / 区域 | Components / 组件
+S | 
+t | 
+i | 
+c | 
+k | 
+y | 
+ | 
+p | 
+r | 
+o | 
+d | 
+u | 
+c | 
+t | 
+ | 
+h | 
+e | 
+a | 
+d | 
+e | 
+r | 
+s | 
+; | 
+ | 
+S | 
+c | 
+o | 
+r | 
+e | 
+ | 
+r | 
+o | 
+w | 
+s | 
+; | 
+ | 
+F | 
+e | 
+a | 
+t | 
+u | 
+r | 
+e | 
+ | 
+r | 
+o | 
+w | 
+s | 
+; | 
+ | 
+R | 
+e | 
+c | 
+o | 
+m | 
+m | 
+e | 
+n | 
+d | 
+a | 
+t | 
+i | 
+o | 
+n | 
+ | 
+c | 
+a | 
+l | 
+l | 
+o | 
+u | 
+t | 
+TABLE 26 END
+TABLE 27 START
+Primary CTA / 主操作 | Secondary / 次操作
+加入方案 / Add Selected | 返回推荐 / Back to Recommendations
+TABLE 27 END
+TABLE 28 START
+State / 状态 | Behavior / 行为 | Copy / 文案
+2 products | Normal comparison | 对比 2 款 / Compare 2
+5 products | Dense mode | 对比 5 款 / Compare 5
+Duplicate | Highlight | 存在相似产品 / Similar products detected
+TABLE 28 END
+TABLE 29 START
+Area / 区域 | Components / 组件
+C | 
+o | 
+v | 
+e | 
+r | 
+; | 
+ | 
+I | 
+n | 
+t | 
+r | 
+o | 
+; | 
+ | 
+P | 
+r | 
+o | 
+d | 
+u | 
+c | 
+t | 
+ | 
+b | 
+l | 
+o | 
+c | 
+k | 
+s | 
+; | 
+ | 
+R | 
+e | 
+c | 
+o | 
+m | 
+m | 
+e | 
+n | 
+d | 
+a | 
+t | 
+i | 
+o | 
+n | 
+ | 
+c | 
+o | 
+p | 
+y | 
+; | 
+ | 
+N | 
+e | 
+x | 
+t | 
+ | 
+S | 
+t | 
+e | 
+p | 
+; | 
+ | 
+L | 
+a | 
+n | 
+g | 
+u | 
+a | 
+g | 
+e | 
+ | 
+s | 
+e | 
+l | 
+e | 
+c | 
+t | 
+o | 
+r | 
+; | 
+ | 
+T | 
+e | 
+m | 
+p | 
+l | 
+a | 
+t | 
+e | 
+; | 
+ | 
+P | 
+r | 
+e | 
+v | 
+i | 
+e | 
+w | 
+TABLE 29 END
+TABLE 30 START
+Primary CTA / 主操作 | Secondary / 次操作
+生成并预览 / Generate & Preview | 保存草稿 / Save Draft
+TABLE 30 END
+TABLE 31 START
+State / 状态 | Behavior / 行为 | Copy / 文案
+Generating | Section skeletons | 正在生成方案 / Generating proposal
+Unsaved | Sticky save warning | 有未保存修改 / Unsaved changes
+Validation | Missing hero image etc. | 缺少必要内容 / Required content missing
+TABLE 31 END
+TABLE 32 START
+Area / 区域 | Components / 组件
+P | 
+a | 
+g | 
+e | 
+ | 
+p | 
+r | 
+e | 
+v | 
+i | 
+e | 
+w | 
+; | 
+ | 
+L | 
+a | 
+n | 
+g | 
+u | 
+a | 
+g | 
+e | 
+ | 
+t | 
+o | 
+g | 
+g | 
+l | 
+e | 
+; | 
+ | 
+S | 
+h | 
+a | 
+r | 
+e | 
+; | 
+ | 
+P | 
+D | 
+F | 
+; | 
+ | 
+E | 
+d | 
+i | 
+t | 
+TABLE 32 END
+TABLE 33 START
+Primary CTA / 主操作 | Secondary / 次操作
+分享给客户 / Share with Client | 返回编辑 / Back to Editor
+TABLE 33 END
+TABLE 34 START
+State / 状态 | Behavior / 行为 | Copy / 文案
+Ready | All actions enabled | 方案已准备就绪 / Proposal ready
+PDF generating | Spinner | 正在生成PDF / Generating PDF
+Share created | Toast with copy link | 分享链接已生成 / Share link created
+TABLE 34 END
+TABLE 35 START
+Area / 区域 | Components / 组件
+C | 
+o | 
+v | 
+e | 
+r | 
+; | 
+ | 
+I | 
+n | 
+t | 
+r | 
+o | 
+; | 
+ | 
+P | 
+r | 
+o | 
+d | 
+u | 
+c | 
+t | 
+ | 
+c | 
+a | 
+r | 
+d | 
+s | 
+; | 
+ | 
+K | 
+e | 
+y | 
+ | 
+F | 
+e | 
+a | 
+t | 
+u | 
+r | 
+e | 
+s | 
+; | 
+ | 
+S | 
+a | 
+m | 
+p | 
+l | 
+e | 
+ | 
+C | 
+T | 
+A | 
+; | 
+ | 
+O | 
+E | 
+M | 
+ | 
+C | 
+T | 
+A | 
+TABLE 35 END
+TABLE 36 START
+Primary CTA / 主操作 | Secondary / 次操作
+索取样品 / Request Sample | 洽谈OEM/ODM / Discuss OEM/ODM
+TABLE 36 END
+TABLE 37 START
+State / 状态 | Behavior / 行为 | Copy / 文案
+Normal | Public read-only | 为您精选的产品方案 / A curated product selection for you
+Expired | Access denied | 该方案已失效 / This proposal has expired
+Password | Password gate | 请输入访问密码 / Enter access password
+TABLE 37 END
+TABLE 38 START
+Area / 区域 | Components / 组件
+S | 
+e | 
+a | 
+r | 
+c | 
+h | 
+; | 
+ | 
+C | 
+a | 
+t | 
+e | 
+g | 
+o | 
+r | 
+y | 
+ | 
+f | 
+i | 
+l | 
+t | 
+e | 
+r | 
+s | 
+; | 
+ | 
+S | 
+t | 
+a | 
+t | 
+u | 
+s | 
+; | 
+ | 
+C | 
+o | 
+m | 
+p | 
+l | 
+e | 
+t | 
+e | 
+n | 
+e | 
+s | 
+s | 
+; | 
+ | 
+U | 
+p | 
+l | 
+o | 
+a | 
+d | 
+; | 
+ | 
+A | 
+I | 
+ | 
+T | 
+a | 
+g | 
+; | 
+ | 
+A | 
+p | 
+p | 
+r | 
+o | 
+v | 
+e | 
+TABLE 38 END
+TABLE 39 START
+Primary CTA / 主操作 | Secondary / 次操作
+新增产品 / Add Product | 批量导入 / Import Excel
+TABLE 39 END
+TABLE 40 START
+State / 状态 | Behavior / 行为 | Copy / 文案
+Empty | No products | 还没有产品 / No products yet
+Importing | Progress bar | 正在导入 / Importing
+Needs review | Amber count | 待审核 / Needs review
+TABLE 40 END
+TABLE 41 START
+Area / 区域 | Components / 组件
+S | 
+a | 
+l | 
+e | 
+s | 
+ | 
+F | 
+u | 
+n | 
+n | 
+e | 
+l | 
+; | 
+ | 
+P | 
+r | 
+o | 
+d | 
+u | 
+c | 
+t | 
+ | 
+l | 
+e | 
+a | 
+d | 
+e | 
+r | 
+b | 
+o | 
+a | 
+r | 
+d | 
+; | 
+ | 
+M | 
+a | 
+r | 
+k | 
+e | 
+t | 
+ | 
+c | 
+h | 
+a | 
+r | 
+t | 
+; | 
+ | 
+A | 
+I | 
+ | 
+q | 
+u | 
+a | 
+l | 
+i | 
+t | 
+y | 
+TABLE 41 END
+TABLE 42 START
+Primary CTA / 主操作 | Secondary / 次操作
+查看客户 / View Clients | 导出 / Export
+TABLE 42 END
+TABLE 43 START
+State / 状态 | Behavior / 行为 | Copy / 文案
+Empty | No enough data | 数据积累中 / Gathering data
+Normal | Charts visible | 推荐效率 / Recommendation efficiency
+TABLE 43 END
+TABLE 44 START
+Area / 区域 | Components / 组件
+P | 
+r | 
+o | 
+f | 
+i | 
+l | 
+e | 
+; | 
+ | 
+L | 
+a | 
+n | 
+g | 
+u | 
+a | 
+g | 
+e | 
+; | 
+ | 
+S | 
+c | 
+o | 
+r | 
+i | 
+n | 
+g | 
+ | 
+C | 
+o | 
+n | 
+f | 
+i | 
+g | 
+; | 
+ | 
+P | 
+r | 
+o | 
+m | 
+p | 
+t | 
+ | 
+V | 
+e | 
+r | 
+s | 
+i | 
+o | 
+n | 
+; | 
+ | 
+S | 
+e | 
+c | 
+u | 
+r | 
+i | 
+t | 
+y | 
+; | 
+ | 
+I | 
+n | 
+t | 
+e | 
+g | 
+r | 
+a | 
+t | 
+i | 
+o | 
+n | 
+s | 
+TABLE 44 END
+TABLE 45 START
+Primary CTA / 主操作 | Secondary / 次操作
+保存设置 / Save Settings | 恢复默认 / Reset
+TABLE 45 END
+TABLE 46 START
+State / 状态 | Behavior / 行为 | Copy / 文案
+Saved | Toast | 设置已保存 / Settings saved
+Invalid | Inline errors | 请检查配置 / Check configuration
+TABLE 46 END
+TABLE 47 START
+区域 | 中文 | English | 规则
+Header | 产品名 / SKU | Product name / SKU | Product image + name
+Score | 94 适配 | 94 Fit | Use large 32–40px score
+Secondary | 96 潜力 | 96 Potential | Smaller than Fit
+Tags | 极简 / 高端 / 女用 | Minimal / Premium / Female | Max 4 visible; overflow +N
+Reason | 为什么推荐 | Why we recommend | 3-part structure: client fact + product fact + business reason
+Actions | 查看详情 / 加入方案 | View Details / Add to Proposal | Primary action always visible
+TABLE 47 END
+TABLE 48 START
+Dimension | Display | Tooltip
+Category Fit | 96 / 品类适配 | 客户主营品类与SKU类别的匹配程度
+Audience Fit | 92 / 用户适配 | 客户目标用户与产品用户的匹配程度
+Brand Fit | 94 / 品牌风格 | 视觉、包装、品牌定位一致性
+Price Fit | 90 / 价格带 | 客户价格走廊与SKU价格的匹配程度
+Portfolio Fit | 93 / 产品线 | 补位程度高于重复程度
+Market Fit | 91 / 市场 | 目标市场适配及证据完整度
+TABLE 48 END
+TABLE 49 START
+State | UI Rule | 中文 | English
+Loading | Never fake progress; show step-based progress | 正在分析客户 | Researching client
+Empty | Explain next action | 还没有客户，先添加一个客户 | No clients yet. Add your first client.
+No Match | Offer broadening controls | 暂无高匹配产品 | No strong matches found
+Limited | Explain evidence limitation | 匹配范围有限 | Limited match coverage
+Error | Inline + actionable retry | 出错了，请重试 | Something went wrong. Retry.
+Success | Short confirmation toast | 已生成方案 | Proposal created
+Unsaved | Persistent warning only when needed | 有未保存修改 | Unsaved changes
+TABLE 49 END
+TABLE 50 START
+Canonical Term | 中文 | English
+Client Intelligence | 客户情报 | Client Intelligence
+Product Intelligence | 产品智能 | Product Intelligence
+Fit Score | 适配分 | Fit Score
+Potential Score | 潜力分 | Potential Score
+Product Intelligence Score | 产品智能评分 | Product Intelligence Score
+Best Match | 最佳匹配 | Best Match
+Growth Opportunity | 增长机会 | Growth Opportunity
+Product Line Expansion | 产品线扩展 | Product Line Expansion
+Strategic Product | 战略产品 | Strategic Product
+Why We Recommend | 为什么推荐 | Why We Recommend
+TABLE 50 END
+TABLE 51 START
+Layer / Component | Naming Pattern
+Page | P06_Recommendations
+Section | P06/RecommendationSummary
+Card | Card/Recommendation/Default
+Button | Button/Primary/AnalyzeClient
+Score | Score/Fit/94
+Tag | Tag/Style/Minimal
+Modal | Modal/ShareProposal
+State | State/Empty/NoMatch
+Icon | Icon/24/ArrowRight
+TABLE 51 END

@@ -1,15 +1,14 @@
 'use client';
 
+import { SCORE_BAND_STYLE, scoreBand } from '@/components/scoreBand';
+
 export function ScoreRing({ score, size = 72, stroke = 6, label, sublabel }: { score: number; size?: number; stroke?: number; label?: string; sublabel?: string }) {
   const radius = (size - stroke) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (score / 100) * circumference;
 
-  let color = '#EF4444';
-  if (score >= 90) color = '#7C3AED';
-  else if (score >= 80) color = '#10B981';
-  else if (score >= 70) color = '#F59E0B';
-  else if (score >= 60) color = '#F97316';
+  // Band colour from config + the shared style map, so this ring agrees with the badges and bars.
+  const color = SCORE_BAND_STYLE[scoreBand(score).key].hex;
 
   return (
     <div className="flex flex-col items-center">
